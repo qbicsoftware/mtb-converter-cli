@@ -7,6 +7,7 @@ from zipfile import ZipFile
 from mtbparser.snv_utils import *
 from .mtbfiletype import MtbFileType
 from .mtbconverter_exceptions import MtbUnknownFileType
+from .mtbconverter_exceptions import MtbIncompleteArchive
 
 class MtbConverter():
 
@@ -31,6 +32,10 @@ class MtbConverter():
                 raise MtbUnknownFileType("Could not determine filetype "
                 "according to the naming convention."
                 " {} was probably not defined.".format(filename))
+            self._snvlists[assigned_type] = filename
+        if len(self._snvlists) != len(MtbFileType):
+            raise MtbIncompleteArchive("The archive did not contain all necessary files."
+            " Only found: {}".format(self._snvlists.keys()))
 
     def _getfiletype(self, filename):
         for filetype in MtbFileType:
