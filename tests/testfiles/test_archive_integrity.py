@@ -22,6 +22,7 @@ class ArchiveTests(unittest.TestCase):
                 'QUK170001AE_germline_snv.tsv',
                 'QUK170001AE_noclue_snv.tsv',
             ]
+        
 
     @raises(MtbUnknownFileType)
     def test_unknown_file_type(self):

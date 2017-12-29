@@ -23,7 +23,7 @@ class MtbConverter():
         self._zip_file = zip_file
         self._snvlists = {}
         self._verify()
-    
+
     def _verify(self):
         for filename in self._zip_file.infolist():
             assigned_type = self._getfiletype(filename)
@@ -31,8 +31,7 @@ class MtbConverter():
                 raise MtbUnknownFileType("Could not determine filetype "
                 "according to the naming convention."
                 " {} was probably not defined.".format(filename))
-            
-        
+
     def _getfiletype(self, filename):
         for filetype in MtbFileType:
             if filetype.value in filename:
