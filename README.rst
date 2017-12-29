@@ -7,6 +7,6 @@ A Python command line tool that parses and converts diagnostic variant data for 
 
 .. |travis| image:: https://travis-ci.org/qbicsoftware/qbic.mtbconverter.svg?branch=development
     :target: https://travis-ci.org/qbicsoftware/qbic.mtbconverter
-.. |codecov| image:: https://codecov.io/gh/qbicsoftware/qbic.mtbconverter/branch/master/graph/badge.svg
+.. |codecov| image:: https://codecov.io/gh/qbicsoftware/qbic.mtbconverter/branch/development/graph/badge.svg
   :target: https://codecov.io/gh/qbicsoftware/qbic.mtbconverter
 
