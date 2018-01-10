@@ -10,6 +10,7 @@ INVALID_BARCODE = "QLAUCH123AE"
 VALID_BARCODE = "QAHJH006A4"
 INVALID_PATH = "my/file/QLAUCH123AE_file.fastq.gz"
 VALID_PATH = "my/file/QAHJH006A4_file.fastq.gz"
+PATH_WITH_MULT_BARCODES = "my/file/QAHJH006A4_QDERS021AS_file.fastq.gz"
 
 class ArchiveTests(unittest.TestCase):
     """Test suite for util methods check"""
@@ -21,6 +22,10 @@ class ArchiveTests(unittest.TestCase):
     @raises(ValueError)
     def test_invalid_path_for_barcode(self):
         utils.getbarcode(INVALID_PATH)
+
+    @raises(ValueError)
+    def test_path_with_multiple_barcodes(self):
+        utils.getbarcode(PATH_WITH_MULT_BARCODES)
 
     def test_valid_path_for_barcode(self):
         barcode = utils.getbarcode(VALID_PATH)

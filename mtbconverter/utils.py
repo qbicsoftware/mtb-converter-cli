@@ -15,9 +15,6 @@ def getbarcode(path):
     stem, suffix = os.path.splitext(os.path.basename(path))
     barcodes = re.findall(BARCODE_REGEX, stem)
     valid_barcodes = [b for b in barcodes if is_valid_barcode(b)]
-    if len(barcodes) != len(valid_barcodes):
-        print("Invalid barcode in file name: %s",
-                    set(barcodes) - set(valid_barcodes))
     if not barcodes:
         raise ValueError("no barcodes found")
     if len(set(barcodes)) > 1:
