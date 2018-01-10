@@ -7,6 +7,9 @@ from zipfile import ZipFile
 from mtbparser.snv_utils import *
 from .mtbfiletype import MtbFileType
 from .mtbconverter_exceptions import MtbUnknownFileType
+from .mtbconverter_exceptions import MtbIncompleteArchive
+from .mtbconverter_exceptions import MtbUnknownBarcode
+
 
 class MtbConverter():
 
@@ -19,20 +22,32 @@ class MtbConverter():
         MtbFileType.META: MetaData
     }
 
-    def __init__(self, zip_file):
+    def __init__(self, zip_file, barcode):
         self._zip_file = zip_file
+        self._barcode = barcode
         self._snvlists = {}
         self._verify()
-    
+        
+
     def _verify(self):
         for filename in self._zip_file.infolist():
             assigned_type = self._getfiletype(filename)
+            if self._barcode not in filename:
+                raise MtbUnknownBarcode("Could not find barcode {} in file '{}'. All"
+                " files need to contain the same "
+                "barcode as the zip archive.".format(self._barcode, filename))
+
             if not assigned_type:
                 raise MtbUnknownFileType("Could not determine filetype "
                 "according to the naming convention."
                 " {} was probably not defined.".format(filename))
-            
+            self._snvlists[assigned_type] = filename
         
+        if len(self._snvlists) != len(MtbFileType):
+            raise MtbIncompleteArchive("The archive did not contain all necessary files."
+            " Only found: {}".format(self._snvlists.keys()))
+        
+
     def _getfiletype(self, filename):
         for filetype in MtbFileType:
             if filetype.value in filename:
