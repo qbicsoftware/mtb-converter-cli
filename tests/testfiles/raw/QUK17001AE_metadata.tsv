@@ -1,0 +1,2 @@
+diagnosis	tumor_content	pathogenic_germline	mutational_load	chromosomal_instability	quality_flags	reference_genome
+C79.6 Sekundäre bösartige Neubildung des Ovars	0.5	no	low	yes	low_quality_snvs;high_quality_cnvs	hg19

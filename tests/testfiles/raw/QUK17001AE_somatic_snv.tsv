@@ -1,0 +1,2 @@
+chr	start	ref	alt	allele_frequency_tumor	coverage	gene	base_change	aa_change	transcript	functional_class	effect
+chr1	12500	C	G	0.25	100	tumor protein p53	g.123A>G	Arg54Ser	NM_001143990.1	intron_variant	activating
