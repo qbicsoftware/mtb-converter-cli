@@ -31,7 +31,7 @@ class MtbConverter():
 
     
     def __init__(self, zip_file, barcode):
-        self._zip_file = ZipFile(zip_file)
+        self._zip_file = zip_file
         self._barcode = barcode
         self._filelist = {}
         self._snvlists = {}

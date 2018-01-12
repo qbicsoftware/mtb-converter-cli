@@ -3,6 +3,7 @@ import sys
 from .mtbconverter import MtbConverter
 from .argparser import *
 from .utils import getbarcode
+from zipfile import ZipFile
 
 __version__ = "0.1.0"
 
@@ -22,7 +23,7 @@ def main(args=None):
         start_conversion(parser.parse_args(args[2:]))
 
 def start_conversion(args):
-    converter = MtbConverter(args.i, getbarcode(args.i))
+    converter = MtbConverter(ZipFile(args.i), getbarcode(args.i))
     converter.convert()
 
 def help_message():
