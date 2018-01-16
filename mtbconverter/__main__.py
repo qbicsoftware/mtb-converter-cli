@@ -5,7 +5,8 @@ from .mtbconverter import MtbConverter
 from .argparser import *
 from .utils import getbarcode
 from zipfile import ZipFile
-from .controlled_vocabulary import ControlledVocabulary
+from .cx_controlled_vocabulary import ControlledVocabulary
+from .cx_parameters import Parameters
 
 __version__ = "0.1.0"
 
@@ -44,9 +45,13 @@ def build_catalogue():
     """Builds the XML catalogue for CentraXX according to the 
     file header specifications"""
     cv = ControlledVocabulary()
-    xml = cv.getXML()
+    params = Parameters()
+    xml_cv = cv.getXML()
+    xml_params = params.getXML()
     with open('cv_centraxx.xml', 'w') as output:
-        output.write(xml.decode('utf-8'))
+        output.write(xml_cv.decode('utf-8'))
+    with open('params_centraxx.xml', 'w') as output:
+        output.write(xml_params.decode('utf-8'))
     
 
 def help_message():

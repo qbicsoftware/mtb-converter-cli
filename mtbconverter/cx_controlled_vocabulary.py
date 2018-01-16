@@ -7,17 +7,9 @@ from pyxb.namespace import XMLSchema_instance as xsi
 from pyxb.namespace import XMLNamespaces as xmlns
 import mtbconverter.cxxpy as cx
 from mtbparser.snv_utils import SSnvHeader
+from . import cx_utils as cxu
 
 CV_VERSION = '0.1'
-
-CV_PREFIX = 'QBIC_'
-
-CV_EFFECT_SSNV = ['activating','inactivating','function_changed','probably_activating',
-                    'probably_inactivating','probable_function_change','ambigious','benign','NA']
-
-CV_BASES = ['C','A','T','G']
-
-CV_CHROMOSOMES = [list(range(1,24)) + ['X', 'Y']]
 
 class ControlledVocabulary:
     
@@ -25,7 +17,6 @@ class ControlledVocabulary:
         pyxb.utils.domutils.BindingDOMSupport.DeclareNamespace(cx.Namespace, 'cxx')
         self._root = cx.CentraXXDataExchange()
         self._source = 'XML-IMPORT'
-        self._prefix = 'QBIC_'
         self._catalogue_data = cx.CatalogueDataType()
         self._cvforssnv()
     
@@ -33,39 +24,36 @@ class ControlledVocabulary:
         """Create the XML entries for the
         somatic SNVs information"""
 
-        # create an index for all human chromosomes      
-        index_list = list(range(1,24)) + ['X', 'Y']
-
         # register the chromosomes (de, en)
-        for chr_index in index_list:
+        for chr_index in cxu.CV_CHROMOSOMES:
             multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='Chromosome {}'.format(chr_index))
             multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='Chromosome {}'.format(chr_index))
             item = cx.UsageEntryType()
             item.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
-            item.Code = '{}{}'.format(CV_PREFIX, chr_index)
+            item.Code = '{}{}'.format(cxu.CV_PREFIX, chr_index)
             item.Category = "false"
             self._catalogue_data.append(item)
         
         # create vc for sSNV effects
-        for effect in CV_EFFECT_SSNV:
+        for effect in cxu.CV_EFFECT_SSNV:
             multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='{}'.format(effect))
             multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='{}'.format(effect))
             item = cx.UsageEntryType()
             item.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
-            item.Code = '{}{}'.format(CV_PREFIX, effect)
+            item.Code = '{}{}'.format(cxu.CV_PREFIX, effect)
             item.Category = "false"
             self._catalogue_data.append(item)
         
         # create cv for bases
-        for base in CV_BASES:
+        for base in cxu.CV_BASES:
             multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='{}'.format(base))
             multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='{}'.format(base))
             item = cx.UsageEntryType()
             item.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
-            item.Code = '{}{}'.format(CV_PREFIX, base)
+            item.Code = '{}{}'.format(cxu.CV_PREFIX, base)
             item.Category = "false"
             self._catalogue_data.append(item)
-
+        
     
     def getXML(self):
         """Write the XML object into an XML
