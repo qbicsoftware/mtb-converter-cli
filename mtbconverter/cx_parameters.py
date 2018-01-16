@@ -21,8 +21,72 @@ class Parameters():
         flexible_value_ci = cx.FlexibleValuesType()
         self._addchromosomes(flexible_value_ci)
         self._addeffects(flexible_value_ci)
+        self._addstart(flexible_value_ci)
+        self._addref(flexible_value_ci)
         self._catalogue_data.append(flexible_value_ci)
     
+    def _addstart(self, flexible_value_ci):
+        """Add the start position of the somatic SNV"""
+        flex_type = cx.FlexibleIntegerType()
+        flex_type.Code = "{}start".format(cxu.CV_PREFIX)
+        flex_type.Name = "Start of SNV"
+        flex_type.ShortName = "Start"
+        flex_type.Description = "Start position of SNV"
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='start')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='start')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='start')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='start')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
+
+    def _addref(self, flexible_value_ci):
+        """Adds the reference base enumeration"""
+        flex_enum_value = cx.FlexibleEnumerationType()
+        flex_enum_value.Code = "{}ref".format(cxu.CV_PREFIX)
+        flex_enum_value.Name = "Reference base"
+        flex_enum_value.ShortName = "Reference"
+        flex_enum_value.ChoiseType = "SELECTONE"
+        flex_enum_value.Description = "Enumeration of different reference bases"
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='ref')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='ref')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='ref')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='ref')
+
+        flex_enum_value.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_enum_value.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flex_enum_value.UsageEntryTypeRef = ["{}{}".format(cxu.CV_PREFIX, ref) for ref in cxu.CV_BASES]
+        flexible_value_ci.append(flex_enum_value)
+    
+    def _addalt(self, flexible_value_ci):
+        pass
+    
+    def _addallelefreq(self, flexible_value_ci):
+        pass
+
+    def _addcoverage(self, flexible_value_ci):
+        pass
+    
+    def _addgene(self, flexible_value_ci):
+        pass
+    
+    def _addbasechange(self, flexible_value_ci):
+        pass
+    
+    def _addaachange(self, flexible_value_ci):
+        pass
+    
+    def _addtranscript(self, flexible_value_ci):
+        pass
+    
+    def _addfunctionalclass(self, flexible_value_ci):
+        pass
+
     def _addeffects(self, flexible_value_ci):
         """Adds the effects of the somatic SNVs"""
         flex_enum_value = cx.FlexibleEnumerationType()
@@ -36,6 +100,9 @@ class Parameters():
         multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='effect')
         multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='effect')
         multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='effect')
+
+        flex_enum_value.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_enum_value.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
 
         flex_enum_value.UsageEntryTypeRef = ["{}{}".format(cxu.CV_PREFIX, effect) for effect in cxu.CV_EFFECT_SSNV]
         flexible_value_ci.append(flex_enum_value)
