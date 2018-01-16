@@ -1,2 +1,2 @@
-mtbconverter
 mtbparser>=0.2.1
+PyXB==1.2.4

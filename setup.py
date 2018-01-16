@@ -10,7 +10,7 @@ setup(
     author='Sven Fillinger',
     author_email='sven.fillinger@qbic.uni-tuebingen.de',
     packages=['mtbconverter'],
-    install_requires=['mtbparser>=0.2.1'],
+    install_requires=['mtbparser>=0.2.1', 'PyXB'],
     classifiers=[
         "Programming Language :: Python",
         "Programming Language :: Python :: 3.4",

@@ -39,7 +39,7 @@ class MtbConverter():
         os.mkdir(self._tmp_dir)
         self._verify()
         self._extract()
-        #self._cleanup()
+        self._cleanup()
 
     def _extract(self):
         try:
@@ -50,7 +50,7 @@ class MtbConverter():
             sys.exit(1)
    
     def convert(self):
-        print("Conersion started")
+        print("Conversion started")
         for variant_file, mtb_filetype in self._filelist.items():
             file_path = self._tmp_dir + os.path.sep + variant_file
             print(file_path)
