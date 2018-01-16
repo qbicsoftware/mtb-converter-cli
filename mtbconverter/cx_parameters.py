@@ -23,6 +23,14 @@ class Parameters():
         self._addeffects(flexible_value_ci)
         self._addstart(flexible_value_ci)
         self._addref(flexible_value_ci)
+        self._addalt(flexible_value_ci)
+        self._addallelefreq(flexible_value_ci)
+        self._addcoverage(flexible_value_ci)
+        self._addgene(flexible_value_ci)
+        self._addbasechange(flexible_value_ci)
+        self._addaachange(flexible_value_ci)
+        self._addtranscript(flexible_value_ci)
+        self._addfunctionalclass(flexible_value_ci)
         self._catalogue_data.append(flexible_value_ci)
     
     def _addstart(self, flexible_value_ci):
@@ -64,28 +72,150 @@ class Parameters():
         flexible_value_ci.append(flex_enum_value)
     
     def _addalt(self, flexible_value_ci):
-        pass
+        """Add the start position of the somatic SNV"""
+        flex_type = cx.FlexibleStringType()
+        flex_type.Code = "{}alt".format(cxu.CV_PREFIX)
+        flex_type.Name = "Alternative"
+        flex_type.ShortName = "Alt"
+        flex_type.Description = "Alternative bases in the variant"
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='alt')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='alt')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='alt')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='alt')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
+
     
     def _addallelefreq(self, flexible_value_ci):
-        pass
+        """Add the alle frequency parameter"""
+        flex_type = cx.FlexibleDecimalType()
+        flex_type.Code = "{}allele_frequency_tumor".format(cxu.CV_PREFIX)
+        flex_type.Name = "Allele Frequency Tumor"
+        flex_type.ShortName = "Allele Frequency"
+        flex_type.Description = "The allele frequency of the variant in the tumor sample"
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='allele_frequency_tumor')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='allele_frequency_tumor')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='allele_frequency_tumor')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='allele_frequency_tumor')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
 
     def _addcoverage(self, flexible_value_ci):
-        pass
+        """Add the coverage information"""
+        flex_type = cx.FlexibleDecimalType()
+        flex_type.Code = "{}coverage".format(cxu.CV_PREFIX)
+        flex_type.Name = "Coverage"
+        flex_type.ShortName = "Coverage"
+        flex_type.Description = "Variant coverage information"
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='coverage')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='coverage')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='coverage')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='coverage')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
     
     def _addgene(self, flexible_value_ci):
-        pass
+        """Add the gene name"""
+        flex_type = cx.FlexibleStringType()
+        flex_type.Code = "{}gene".format(cxu.CV_PREFIX)
+        flex_type.Name = "Gene Name"
+        flex_type.ShortName = "Gene"
+        flex_type.Description = "The affected gene"
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='gene')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='gene')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='gene')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='gene')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
+
     
     def _addbasechange(self, flexible_value_ci):
-        pass
+        """Add the base change info"""
+        flex_type = cx.FlexibleStringType()
+        flex_type.Code = "{}base_change".format(cxu.CV_PREFIX)
+        flex_type.Name = "Base change"
+        flex_type.ShortName = "base change"
+        flex_type.Description = "Base change info in HGVS terms"
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='base_change')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='base_change')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='base_change')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='base_change')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
     
     def _addaachange(self, flexible_value_ci):
-        pass
+        """Add the aa change info"""
+        flex_type = cx.FlexibleStringType()
+        flex_type.Code = "{}aa_change".format(cxu.CV_PREFIX)
+        flex_type.Name = "Aminoacid change"
+        flex_type.ShortName = "AA change"
+        flex_type.Description = "Amino change info in HGVS terms"
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='aa_change')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='aa_change')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='aa_change')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='aa_change')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
     
     def _addtranscript(self, flexible_value_ci):
-        pass
+        """Add the transcript ID"""
+        flex_type = cx.FlexibleStringType()
+        flex_type.Code = "{}transcript".format(cxu.CV_PREFIX)
+        flex_type.Name = "Transcript ID"
+        flex_type.ShortName = "Transcript ID"
+        flex_type.Description = "External db transcript identifier"
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='transcript')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='transcript')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='transcript')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='transcript')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
     
     def _addfunctionalclass(self, flexible_value_ci):
-        pass
+        """Add the functional class of the variant"""
+        flex_type = cx.FlexibleStringType()
+        flex_type.Code = "{}functional_class".format(cxu.CV_PREFIX)
+        flex_type.Name = "Functional class"
+        flex_type.ShortName = "Functional class"
+        flex_type.Description = "The functional class of the variant"
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='functional_class')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='functional_class')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='functional_class')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='functional_class')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
 
     def _addeffects(self, flexible_value_ci):
         """Adds the effects of the somatic SNVs"""
