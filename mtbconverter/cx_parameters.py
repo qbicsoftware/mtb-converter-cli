@@ -32,8 +32,29 @@ class Parameters():
         self._addtranscript(flexible_value_ci)
         self._addfunctionalclass(flexible_value_ci)
         self._addmutationalload(flexible_value_ci)
+        self._addgenotype(flexible_value_ci)
         self._catalogue_data.append(flexible_value_ci)
-    
+        
+    def _addgenotype(self, flexible_value_ci):
+        """Mutational genotype enumeration """
+        flex_enum_value = cx.FlexibleEnumerationType()
+        flex_enum_value.Code = "{}genotype".format(cxu.CV_PREFIX)
+        flex_enum_value.Name = "Genotype"
+        flex_enum_value.ShortName = "Genotype"
+        flex_enum_value.ChoiseType = "SELECTONE"
+        flex_enum_value.Description = "Enumeration of different genotypes"
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='genotype')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='genotype')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='genotype')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='genotype')
+
+        flex_enum_value.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_enum_value.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flex_enum_value.UsageEntryTypeRef = ["{}{}_{}".format(cxu.CV_PREFIX, 'genotype', genotype) for genotype in cxu.CV_GENOTYPES]
+        flexible_value_ci.append(flex_enum_value)
+
     def _addmutationalload(self, flexible_value_ci):
         """Mutational load enumeration 'low', 'medium', 'high'"""
         flex_enum_value = cx.FlexibleEnumerationType()

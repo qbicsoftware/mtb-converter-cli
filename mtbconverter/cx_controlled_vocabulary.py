@@ -64,7 +64,16 @@ class ControlledVocabulary:
             item.Category = "false"
             self._catalogue_data.append(item)
         
-    
+        for genotype in cxu.CV_GENOTYPES:
+            multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='{}'.format(genotype))
+            multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='{}'.format(genotype))
+            item = cx.UsageEntryType()
+            item.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+            item.Code = '{}{}_{}'.format(cxu.CV_PREFIX, 'genotype', load)
+            item.Category = "false"
+            self._catalogue_data.append(item)
+
+        
     def getXML(self):
         """Write the XML object into an XML
         file"""
