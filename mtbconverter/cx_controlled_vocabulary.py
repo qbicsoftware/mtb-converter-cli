@@ -30,7 +30,7 @@ class ControlledVocabulary:
             multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='Chromosome {}'.format(chr_index))
             item = cx.UsageEntryType()
             item.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
-            item.Code = '{}{}'.format(cxu.CV_PREFIX, chr_index)
+            item.Code = '{}{}{}'.format(cxu.CV_PREFIX, 'chr',chr_index)
             item.Category = "false"
             self._catalogue_data.append(item)
         
@@ -50,7 +50,17 @@ class ControlledVocabulary:
             multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='{}'.format(base))
             item = cx.UsageEntryType()
             item.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
-            item.Code = '{}{}'.format(cxu.CV_PREFIX, base)
+            item.Code = '{}{}{}'.format(cxu.CV_PREFIX, 'base', base)
+            item.Category = "false"
+            self._catalogue_data.append(item)
+        
+        # create cv for mutational load
+        for load in cxu.CV_MUT_LOAD:
+            multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='{}'.format(load))
+            multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='{}'.format(load))
+            item = cx.UsageEntryType()
+            item.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+            item.Code = '{}{}_{}'.format(cxu.CV_PREFIX, 'mutational_load', load)
             item.Category = "false"
             self._catalogue_data.append(item)
         

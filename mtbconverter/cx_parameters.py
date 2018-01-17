@@ -31,7 +31,28 @@ class Parameters():
         self._addaachange(flexible_value_ci)
         self._addtranscript(flexible_value_ci)
         self._addfunctionalclass(flexible_value_ci)
+        self._addmutationalload(flexible_value_ci)
         self._catalogue_data.append(flexible_value_ci)
+    
+    def _addmutationalload(self, flexible_value_ci):
+        """Mutational load enumeration 'low', 'medium', 'high'"""
+        flex_enum_value = cx.FlexibleEnumerationType()
+        flex_enum_value.Code = "{}mutational_load".format(cxu.CV_PREFIX)
+        flex_enum_value.Name = "Mutational load"
+        flex_enum_value.ShortName = "Mut. load"
+        flex_enum_value.ChoiseType = "SELECTONE"
+        flex_enum_value.Description = "Enumeration of different mutational load flags"
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='load')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='load')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='load')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='load')
+
+        flex_enum_value.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_enum_value.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flex_enum_value.UsageEntryTypeRef = ["{}{}_{}".format(cxu.CV_PREFIX, 'mutational_load', load) for load in cxu.CV_MUT_LOAD]
+        flexible_value_ci.append(flex_enum_value)
     
     def _addstart(self, flexible_value_ci):
         """Add the start position of the somatic SNV"""
@@ -68,7 +89,7 @@ class Parameters():
         flex_enum_value.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
         flex_enum_value.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
 
-        flex_enum_value.UsageEntryTypeRef = ["{}{}".format(cxu.CV_PREFIX, ref) for ref in cxu.CV_BASES]
+        flex_enum_value.UsageEntryTypeRef = ["{}{}{}".format(cxu.CV_PREFIX, 'base', ref) for ref in cxu.CV_BASES]
         flexible_value_ci.append(flex_enum_value)
     
     def _addalt(self, flexible_value_ci):
