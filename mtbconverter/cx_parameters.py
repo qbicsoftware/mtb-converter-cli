@@ -36,7 +36,26 @@ class Parameters():
         self._addeffects_germline(flexible_value_ci)
         self._addexons(flexible_value_ci)
         self._addend(flexible_value_ci)
+        self._addtype(flexible_value_ci)
         self._catalogue_data.append(flexible_value_ci)
+    
+    def _addtype(self, flexible_value_ci):
+        """Add type field for structural variants"""
+        flex_type = cx.FlexibleStringType()
+        flex_type.Code = "{}type".format(cxu.CV_PREFIX)
+        flex_type.Name = "Type of structural variant"
+        flex_type.ShortName = "SV type"
+        flex_type.Description = "Type of structural variant"
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='type')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='type')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='type')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='type')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
 
     def _addend(self, flexible_value_ci):
         """Add a field for end positions of CNVs"""
