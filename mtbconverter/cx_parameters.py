@@ -33,7 +33,45 @@ class Parameters():
         self._addfunctionalclass(flexible_value_ci)
         self._addmutationalload(flexible_value_ci)
         self._addgenotype(flexible_value_ci)
+        self._addeffects_germline(flexible_value_ci)
+        self._addexons(flexible_value_ci)
         self._catalogue_data.append(flexible_value_ci)
+    
+    def _addexons(self, flexible_value_ci):
+        """Add the exon description field"""
+        flex_type = cx.FlexibleStringType()
+        flex_type.Code = "{}exons".format(cxu.CV_PREFIX)
+        flex_type.Name = "Name the affected exons of CNV"
+        flex_type.ShortName = "Exons affected by CNV"
+        flex_type.Description = "Exons affected by CNV"
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='exons')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='exons')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='exons')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='exons')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
+
+    def _addeffects_germline(self, flexible_value_ci):
+        """Add the effects for germline SNVs"""
+        flex_type = cx.FlexibleStringType()
+        flex_type.Code = "{}effect_germline".format(cxu.CV_PREFIX)
+        flex_type.Name = "Effect prediction in germline SNV"
+        flex_type.ShortName = "Pred. germline effect"
+        flex_type.Description = "ACMG-based effect of variant"
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='effect_germline')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='effect_germline')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='effect_germline')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='effect_germline')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
         
     def _addgenotype(self, flexible_value_ci):
         """Mutational genotype enumeration """
