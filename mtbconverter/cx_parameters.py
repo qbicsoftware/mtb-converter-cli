@@ -35,7 +35,26 @@ class Parameters():
         self._addgenotype(flexible_value_ci)
         self._addeffects_germline(flexible_value_ci)
         self._addexons(flexible_value_ci)
+        self._addend(flexible_value_ci)
         self._catalogue_data.append(flexible_value_ci)
+
+    def _addend(self, flexible_value_ci):
+        """Add a field for end positions of CNVs"""
+        flex_type = cx.FlexibleIntegerType()
+        flex_type.Code = "{}end".format(cxu.CV_PREFIX)
+        flex_type.Name = "End position of CNV"
+        flex_type.ShortName = "End pos."
+        flex_type.Description = "End position of CNV"
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='end')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='end')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='end')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='end')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
     
     def _addexons(self, flexible_value_ci):
         """Add the exon description field"""
