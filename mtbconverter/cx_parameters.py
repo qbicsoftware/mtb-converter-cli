@@ -37,7 +37,47 @@ class Parameters():
         self._addexons(flexible_value_ci)
         self._addend(flexible_value_ci)
         self._addtype(flexible_value_ci)
+        self._addleftbp(flexible_value_ci)
+        self._addrightbp(flexible_value_ci)
         self._catalogue_data.append(flexible_value_ci)
+
+    def _addleftbp(self, flexible_value_ci):
+        """Add field for left break point position of structural
+        variant"""
+        flex_type = cx.FlexibleStringType()
+        flex_type.Code = "{}left_bp".format(cxu.CV_PREFIX)
+        flex_type.Name = "Left break point position"
+        flex_type.ShortName = "SV left bp"
+        flex_type.Description = "Left break point position of SV"
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='left_bp')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='left_bp')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='left_bp')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='left_bp')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
+
+    def _addrightbp(self, flexible_value_ci):
+        """Add field for right break point position of structural
+        variant"""
+        flex_type = cx.FlexibleStringType()
+        flex_type.Code = "{}right_bp".format(cxu.CV_PREFIX)
+        flex_type.Name = "LRighteft break point position"
+        flex_type.ShortName = "SV right bp"
+        flex_type.Description = "Right break point position of SV"
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='right_bp')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='right_bp')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='right_bp')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='right_bp')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
     
     def _addtype(self, flexible_value_ci):
         """Add type field for structural variants"""
