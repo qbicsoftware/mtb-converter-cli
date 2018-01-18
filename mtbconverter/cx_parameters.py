@@ -19,6 +19,8 @@ class Parameters():
     def _paramsforssnv(self):
         """Call methods for somatic SNV parameter definition"""
         flexible_value_ci = cx.FlexibleValuesType()
+
+        # Add column fields for MTB variant report
         self._addchromosomes(flexible_value_ci)
         self._addeffects(flexible_value_ci)
         self._addstart(flexible_value_ci)
@@ -39,7 +41,123 @@ class Parameters():
         self._addtype(flexible_value_ci)
         self._addleftbp(flexible_value_ci)
         self._addrightbp(flexible_value_ci)
+        self._adddiagnosis(flexible_value_ci)
+        self._addtumorcontent(flexible_value_ci)
+        self._addpathogenicinfo(flexible_value_ci)
+        self._addchromosomalinstability(flexible_value_ci)
+        self._addqualityflags(flexible_value_ci)
+        self._addreferencegenome(flexible_value_ci)
+
+        # Append the flexible values to the catalogue data
         self._catalogue_data.append(flexible_value_ci)
+
+    def _addreferencegenome(self, flexible_value_ci):
+        """Add reference genome info"""
+        flex_type = cx.FlexibleStringType()
+        flex_type.Code = "{}reference_genome".format(cxu.CV_PREFIX)
+        flex_type.Name = "Reference genome"
+        flex_type.ShortName = "Ref. genome"
+        flex_type.Description = "Reference genome used for mapping."
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='reference_genome')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='reference_genome')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='reference_genome')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='reference_genome')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
+    
+    def _addqualityflags(self, flexible_value_ci):
+        """Add quality flags info"""
+        flex_type = cx.FlexibleStringType()
+        flex_type.Code = "{}quality_flag".format(cxu.CV_PREFIX)
+        flex_type.Name = "Quality flags"
+        flex_type.ShortName = "Quality flags"
+        flex_type.Description = "Quality flags information."
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='quality_flag')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='quality_flag')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='quality_flag')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='quality_flag')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
+
+    def _addchromosomalinstability(self, flexible_value_ci):
+        """Add chromosomal instability info"""
+        flex_type = cx.FlexibleStringType()
+        flex_type.Code = "{}chrom_instability".format(cxu.CV_PREFIX)
+        flex_type.Name = "Chromosomal instability"
+        flex_type.ShortName = "Chr. instab."
+        flex_type.Description = "Chromosomal instability information."
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='chrom_instability')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='chrom_instability')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='chrom_instability')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='chrom_instability')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
+
+    def _addpathogenicinfo(self, flexible_value_ci):
+        """Add field for pathogenic germline info"""
+        flex_type = cx.FlexibleStringType()
+        flex_type.Code = "{}pathogenic_germ".format(cxu.CV_PREFIX)
+        flex_type.Name = "Pathogenic germline"
+        flex_type.ShortName = "Path. germline"
+        flex_type.Description = "Presence of pathogenic germline information."
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='pathogenic_germ')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='pathogenic_germ')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='pathogenic_germ')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='pathogenic_germ')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
+
+    def _addtumorcontent(self, flexible_value_ci):
+        """Add field for tumor content"""
+        flex_type = cx.FlexibleDecimalType()
+        flex_type.Code = "{}tumor_content".format(cxu.CV_PREFIX)
+        flex_type.Name = "Sample tumor content"
+        flex_type.ShortName = "Tumor content"
+        flex_type.Description = "Tumor content of the sample as reportet by the pathologist."
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='tumor_content')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='tumor_content')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='tumor_content')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='tumor_content')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
+
+    def _adddiagnosis(self, flexible_value_ci):
+        """Add field for diagnosis terms"""
+        flex_type = cx.FlexibleStringType()
+        flex_type.Code = "{}diagnosis".format(cxu.CV_PREFIX)
+        flex_type.Name = "Diagnosis"
+        flex_type.ShortName = "Diagnosis"
+        flex_type.Description = "Diagnosis based on the variant data"
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='diagnosis')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='diagnosis')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='diagnosis')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='diagnosis')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
 
     def _addleftbp(self, flexible_value_ci):
         """Add field for left break point position of structural
