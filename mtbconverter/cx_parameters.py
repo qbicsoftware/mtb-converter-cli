@@ -14,14 +14,15 @@ class Parameters():
         self._root = cx.CentraXXDataExchange()
         self._source = 'XML-IMPORT'
         self._catalogue_data = cx.CatalogueDataType()
-        self._paramsforssnv()
+        self._params()
     
-    def _paramsforssnv(self):
-        """Call methods for somatic SNV parameter definition"""
+    def _params(self):
+        """Call methods for the parameter definition"""
         flexible_value_ci = cx.FlexibleValuesType()
 
         # Add column fields for MTB variant report
         self._addchromosomes(flexible_value_ci)
+        self._addcopynumber(flexible_value_ci)
         self._addeffects(flexible_value_ci)
         self._addstart(flexible_value_ci)
         self._addref(flexible_value_ci)
@@ -50,6 +51,24 @@ class Parameters():
 
         # Append the flexible values to the catalogue data
         self._catalogue_data.append(flexible_value_ci)
+
+    def _addcopynumber(self, flexible_value_ci):
+        """Add copy number info"""
+        flex_type = cx.FlexibleStringType()
+        flex_type.Code = "{}copy_number".format(cxu.CV_PREFIX)
+        flex_type.Name = "Copy number"
+        flex_type.ShortName = "Copy number"
+        flex_type.Description = "Copy number amount."
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='copy_number')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='copy_number')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='copy_number')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='copy_number')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
 
     def _addreferencegenome(self, flexible_value_ci):
         """Add reference genome info"""
