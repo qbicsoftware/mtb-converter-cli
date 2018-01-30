@@ -7,6 +7,7 @@ from .utils import getbarcode
 from zipfile import ZipFile
 from .cx_controlled_vocabulary import ControlledVocabulary
 from .cx_parameters import Parameters
+from .cx_profiles import *
 
 __version__ = "0.1.0"
 
@@ -26,6 +27,10 @@ def main(args=None):
     if args[1] not in COMMANDS:
         print(help_message())
     if args[1] == 'convert':
+        if(len(args)<=2):
+            print("Missing arguments!")
+            print(help_message)
+            sys.exit(1)
         parser = conversion_parser()
         start_conversion(parser.parse_args(args[2:]))
     if args[1] == 'catalogue':
@@ -46,12 +51,29 @@ def build_catalogue():
     file header specifications"""
     cv = ControlledVocabulary()
     params = Parameters()
-    xml_cv = cv.getXML()
-    xml_params = params.getXML()
+    ssnv_profile = SSNVProfiles()
+    gsnv_profile = GSNVProfiles()
+    scnv_profile = SCNVProfiles()
+    gcnv_profile = GCNVProfiles()
+    sv_profile = SVProfiles()
+    metadata_profile = MetadataProfiles()
+
     with open('cv_centraxx.xml', 'w') as output:
-        output.write(xml_cv.decode('utf-8'))
+        output.write(cv.getXML().decode('utf-8'))
     with open('params_centraxx.xml', 'w') as output:
-        output.write(xml_params.decode('utf-8'))
+        output.write(params.getXML().decode('utf-8'))
+    with open('ssnv_profiles_centraxx.xml', 'w') as output:
+        output.write(ssnv_profile.getXML().decode('utf-8'))
+    with open('gsnv_profiles_centraxx.xml', 'w') as output:
+        output.write(gsnv_profile.getXML().decode('utf-8'))
+    with open('scnv_profiles_centraxx.xml', 'w') as output:
+        output.write(scnv_profile.getXML().decode('utf-8'))
+    with open('gcnv_profiles_centraxx.xml', 'w') as output:
+        output.write(gcnv_profile.getXML().decode('utf-8'))
+    with open('sv_profiles_centraxx.xml', 'w') as output:
+        output.write(sv_profile.getXML().decode('utf-8'))
+    with open('metadata_profiles_centraxx.xml', 'w') as output:
+        output.write(metadata_profile.getXML().decode('utf-8'))
     
 
 def help_message():
