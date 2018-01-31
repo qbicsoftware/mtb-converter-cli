@@ -68,11 +68,11 @@ After executing ``catalogue``, mtbconverter will create 8 XML files:
 1. cv_centraxx.xml: The controlled vobaculary for CentraXX.
 2. params_centraxx.xml: The parameters and the expected data type for CentraXX.
 3. ssnv_profiles_centraxx.xml: The profile for somatic SNVs.
-3. scnv_profiles_centraxx.xml: The profile for somatic CNVs.
-3. gsnv_profiles_centraxx.xml: The profile for germline SNVs.
-3. gcnv_profiles_centraxx.xml: The profile for germline CNVs.
-3. sv_profiles_centraxx.xml: The profile for somatic structural variants.
-3. metadata_profiles_centraxx.xml: The profile for metadata, containing the diagnosis.
+4. scnv_profiles_centraxx.xml: The profile for somatic CNVs.
+5. gsnv_profiles_centraxx.xml: The profile for germline SNVs.
+6. gcnv_profiles_centraxx.xml: The profile for germline CNVs.
+7. sv_profiles_centraxx.xml: The profile for somatic structural variants.
+8. metadata_profiles_centraxx.xml: The profile for metadata, containing the diagnosis.
 
 
 .. _library: https://github.com/qbicsoftware/qbic.mtbparser/blob/master/README.md
