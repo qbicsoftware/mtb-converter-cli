@@ -38,7 +38,8 @@ The ``convert`` command tells the mtbconverter to parse the necessary MTB inform
     -i archive.zip  ZIP archive containing the variant information files.
 
 **Archive format specification**
- 
+The ZIP archive name needs to carry the QBIC barcode, and the same needs to present in all files within the archive. This is just to make sure, that the files indeed belong to the same sample.
+
 .. code-block:: bash
   
   Archive name:
@@ -51,6 +52,31 @@ The ``convert`` command tells the mtbconverter to parse the necessary MTB inform
   <QBiC-Barcode>_germline_cnv.tsv
   <QBiC-Barcode>_somatic_sv.tsv
   <QBiC-Barcode>_metadata.tsv
+
+The information is encoded in the six TSV files, following the specification described in detail in the ``mtbparser`` library_.
+
+push
+~~~~
+*This section needs to be filled with information.*
+
+catalogue
+~~~~~~~~~
+The ``catalogue`` command creates XML files for CentraXX controlled vocabulary, parameters definition and profiles. This needs to be done only once every time a specification changes, so CentraXX knows how to connect the incoming data, once it gets imported.
+
+After executing ``catalogue``, mtbconverter will create 8 XML files:
+
+1. cv_centraxx.xml: The controlled vobaculary for CentraXX.
+2. params_centraxx.xml: The parameters and the expected data type for CentraXX.
+3. ssnv_profiles_centraxx.xml: The profile for somatic SNVs.
+3. scnv_profiles_centraxx.xml: The profile for somatic CNVs.
+3. gsnv_profiles_centraxx.xml: The profile for germline SNVs.
+3. gcnv_profiles_centraxx.xml: The profile for germline CNVs.
+3. sv_profiles_centraxx.xml: The profile for somatic structural variants.
+3. metadata_profiles_centraxx.xml: The profile for metadata, containing the diagnosis.
+
+
+.. _library: https://github.com/qbicsoftware/qbic.mtbparser/blob/master/README.md
+  
 
   
  
