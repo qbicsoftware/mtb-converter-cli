@@ -26,7 +26,6 @@ The ``convert`` command tells the mtbconverter to parse the necessary MTB inform
 
 .. _specification: https://github.com/qbicsoftware/qbic.mtbparser/blob/master/README.md
 
-
 .. code-block:: bash
 
   Mtbconverter version 0.1.0.
