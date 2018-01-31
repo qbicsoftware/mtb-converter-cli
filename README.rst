@@ -22,7 +22,7 @@ The mtbconverter currently supports three commands: ``convert, push`` and ``cata
 
 convert
 ~~~~~~~
-The ``convert`` command tells the mtbconverter to parse the necessary MTB information from a given zip archive. The archive needs to contain several TSV files. which follow the format specification and naming convention described in the ``mtbparser`` module, which is implemented in mtbconverter.
+The ``convert`` command tells the mtbconverter to parse the necessary MTB information from a given zip archive. The archive needs to contain several TSV files. which follow the format specification_ and naming convention described in the ``mtbparser`` module, which is implemented in mtbconverter.
 
 .. code-block:: bash
 
@@ -35,4 +35,4 @@ The ``convert`` command tells the mtbconverter to parse the necessary MTB inform
     -h, --help      show this help message and exit
     -i archive.zip  ZIP archive containing the variant information files.
     
- 
+ .. _specification: https://github.com/qbicsoftware/qbic.mtbparser/blob/master/README.md
