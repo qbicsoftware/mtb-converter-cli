@@ -39,5 +39,19 @@ The ``convert`` command tells the mtbconverter to parse the necessary MTB inform
 
 **Archive format specification**
  
+.. code-block:: bash
+  
+  Archive name:
+  <QBIC-barcode>_*.zip
+  
+  Archive content:
+  <QBiC-Barcode>_somatic_snv.tsv
+  <QBiC-Barcode>_somatic_cnv.tsv
+  <QBiC-Barcode>_germline_snv.tsv
+  <QBiC-Barcode>_germline_cnv.tsv
+  <QBiC-Barcode>_somatic_sv.tsv
+  <QBiC-Barcode>_metadata.tsv
+
+  
  
  
