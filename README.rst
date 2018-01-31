@@ -36,7 +36,8 @@ The ``convert`` command tells the mtbconverter to parse the necessary MTB inform
   optional arguments:
     -h, --help      show this help message and exit
     -i archive.zip  ZIP archive containing the variant information files.
- 
+
+**Archive format specification**
  
  
  
