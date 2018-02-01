@@ -26,8 +26,8 @@ class ControlledVocabulary:
 
         # register the chromosomes (de, en)
         for chr_index in cxu.CV_CHROMOSOMES:
-            multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='Chromosome {}'.format(chr_index))
-            multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='Chromosome {}'.format(chr_index))
+            multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='Chromosome {}{}{}'.format(cxu.CV_PREFIX, 'chr',chr_index))
+            multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='Chromosome {}{}{}'.format(cxu.CV_PREFIX, 'chr',chr_index))
             item = cx.UsageEntryType()
             item.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
             item.Code = '{}{}{}'.format(cxu.CV_PREFIX, 'chr',chr_index)
@@ -36,8 +36,8 @@ class ControlledVocabulary:
         
         # create vc for sSNV effects
         for effect in cxu.CV_EFFECT_SSNV:
-            multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='{}'.format(effect))
-            multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='{}'.format(effect))
+            multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='{}{}'.format(cxu.CV_PREFIX, effect))
+            multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='{}{}'.format(cxu.CV_PREFIX, effect))
             item = cx.UsageEntryType()
             item.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
             item.Code = '{}{}'.format(cxu.CV_PREFIX, effect)
@@ -46,8 +46,8 @@ class ControlledVocabulary:
         
         # create cv for bases
         for base in cxu.CV_BASES:
-            multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='{}'.format(base))
-            multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='{}'.format(base))
+            multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='{}{}{}'.format(cxu.CV_PREFIX, 'base', base))
+            multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='{}{}{}'.format(cxu.CV_PREFIX, 'base', base))
             item = cx.UsageEntryType()
             item.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
             item.Code = '{}{}{}'.format(cxu.CV_PREFIX, 'base', base)
@@ -56,8 +56,8 @@ class ControlledVocabulary:
         
         # create cv for mutational load
         for load in cxu.CV_MUT_LOAD:
-            multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='{}'.format(load))
-            multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='{}'.format(load))
+            multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='{}{}_{}'.format(cxu.CV_PREFIX, 'mutational_load', load))
+            multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='{}{}_{}'.format(cxu.CV_PREFIX, 'mutational_load', load))
             item = cx.UsageEntryType()
             item.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
             item.Code = '{}{}_{}'.format(cxu.CV_PREFIX, 'mutational_load', load)
@@ -65,11 +65,11 @@ class ControlledVocabulary:
             self._catalogue_data.append(item)
         
         for genotype in cxu.CV_GENOTYPES:
-            multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='{}'.format(genotype))
-            multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='{}'.format(genotype))
+            multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='{}{}_{}'.format(cxu.CV_PREFIX, 'genotype', genotype))
+            multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='{}{}_{}'.format(cxu.CV_PREFIX, 'genotype', genotype))
             item = cx.UsageEntryType()
             item.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
-            item.Code = '{}{}_{}'.format(cxu.CV_PREFIX, 'genotype', load)
+            item.Code = '{}{}_{}'.format(cxu.CV_PREFIX, 'genotype', genotype)
             item.Category = "false"
             self._catalogue_data.append(item)
 

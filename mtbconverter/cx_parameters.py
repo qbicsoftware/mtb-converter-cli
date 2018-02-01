@@ -48,9 +48,29 @@ class Parameters():
         self._addchromosomalinstability(flexible_value_ci)
         self._addqualityflags(flexible_value_ci)
         self._addreferencegenome(flexible_value_ci)
+        self._addsize(flexible_value_ci)
 
         # Append the flexible values to the catalogue data
         self._catalogue_data.append(flexible_value_ci)
+
+    def _addsize(self, flexible_value_ci):
+        """Add CNV size information"""
+        flex_type = cx.FlexibleStringType()
+        flex_type.Code = "{}size".format(cxu.CV_PREFIX)
+        flex_type.Name = "CNV size"
+        flex_type.ShortName = "Size"
+        flex_type.Description = "Copy number variation size."
+
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='size')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='size')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='size')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='size')
+
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+
+        flexible_value_ci.append(flex_type)
+
 
     def _addcopynumber(self, flexible_value_ci):
         """Add copy number info"""
