@@ -27,14 +27,20 @@ def main(args=None):
     if args[1] not in COMMANDS:
         print(help_message())
     if args[1] == 'convert':
-        if(len(args)<=2):
-            print("Missing arguments!")
-            print(help_message)
-            sys.exit(1)
         parser = conversion_parser()
         start_conversion(parser.parse_args(args[2:]))
     if args[1] == 'catalogue':
         build_catalogue()
+    if args[1] == 'push':
+        parser = push_parser()
+        push(parser.parse_args(args[2:]))
+    sys.exit(0)
+
+
+def push(args):
+    """Establish a connection to CentraXX and tries to
+    import a given XML file."""
+    pass
 
 
 def start_conversion(args):

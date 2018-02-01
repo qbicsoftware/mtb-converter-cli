@@ -22,10 +22,10 @@ GSNV_FIELD_TYPES = ["QBIC_chr", "QBIC_start", "QBIC_ref", "QBIC_alt", "QBIC_geno
 "QBIC_gene", "QBIC_base_change", "QBIC_aa_change", "QBIC_transcript", "QBIC_functional_class",
 "QBIC_effect"]
 
-SCNV_FIELD_TYPES = ["QBIC_size", "QBIC_type", "QBIC_copy_number", "QBIC_gene", "QBIC_exons", "QBIC_transcript"
+SCNV_FIELD_TYPES = ["QBIC_size", "QBIC_type", "QBIC_copy_number", "QBIC_gene", "QBIC_exons", "QBIC_transcript",
 "QBIC_chr", "QBIC_start", "QBIC_end", "QBIC_effect"]
 
-GCNV_FIELD_TYPES = ["QBIC_size", "QBIC_type", "QBIC_copy_number", "QBIC_gene", "QBIC_exons", "QBIC_transcript"
+GCNV_FIELD_TYPES = ["QBIC_size", "QBIC_type", "QBIC_copy_number", "QBIC_gene", "QBIC_exons", "QBIC_transcript",
 "QBIC_chr", "QBIC_start", "QBIC_end", "QBIC_effect"]
 
 SV_FIELD_TYPES = ["QBIC_type", "QBIC_gene", "QBIC_effect", "QBIC_left_bp", "QBIC_right_bp"]
