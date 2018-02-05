@@ -4,8 +4,7 @@ type for the patient import"""
 import uuid
 import datetime
 
-
-class DataSetInstance{
+class DataSetInstance():
 
     def __init__(self, header_type, snv_item, date, version, instance):
         """DataSetInstance object

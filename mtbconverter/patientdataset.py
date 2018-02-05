@@ -4,7 +4,7 @@ to link them by their reference number"""
 
 from mtbconverter_exceptions import NoReferenceIdFound
 
-class PatientDataSet {
+class PatientDataSet():
 
     def __init__(self, qbic_pat_id, qbic_sample_id,
         datetime, datasetinstance_list):
@@ -63,5 +63,3 @@ class PatientDataSet {
         patient_data_set.SampleData = master_sample
 
         return patient_data_set           
-
-}
