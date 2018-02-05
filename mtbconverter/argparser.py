@@ -6,7 +6,8 @@ import argparse
 def conversion_parser():
     parser = argparse.ArgumentParser(prog="convert", description="Conversion of "
     "variant information into CentraXX schema conform XML.")
-    parser.add_argument('archive.zip' , help='ZIP archive containing the variant information files.')
+    parser.add_argument('archive' , help='ZIP archive containing the variant information files.')
+    parser.add_argument('patientID' , help='A QBiC patient ID.')
     return parser
 
 def push_parser():

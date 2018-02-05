@@ -2,7 +2,7 @@
 which consumes multiple datasetinstances in order
 to link them by their reference number"""
 
-from mtbconverter_exceptions import NoReferenceIdFound
+from .mtbconverter_exceptions import NoReferenceIdFound
 
 class PatientDataSet():
 

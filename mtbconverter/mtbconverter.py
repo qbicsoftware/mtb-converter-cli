@@ -11,9 +11,10 @@ from mtbparser.snv_utils import *
 from .mtbfiletype import MtbFileType
 from .mtbconverter_exceptions import MtbUnknownFileType
 from .mtbconverter_exceptions import MtbIncompleteArchive
-from .mtbconverter_exceptions import MtbUnknownsample_code
+from .mtbconverter_exceptions import MtbUnknownBarcode
 from .datasetinstance import DataSetInstance
 from .patientdataset import PatientDataSet
+from .cx_profiles import *
 from mtbparser.snv_parser import SnvParser
 from mtbparser.snv_utils import SSnvHeader
 from datetime import datetime
@@ -30,12 +31,12 @@ FILETYPE_HEADER = {
     }
 
 VERSIONS = {
-    MtbFileType.GERM_SNV: 'QBIC_GERMLINE_SNV_V{}'.format(cx_profiles.GERMLINE_SNV_VERSION) ,
-    MtbFileType.SOM_SNV: 'QBIC_SOMATIC_SNV_V{}'.format(cx_profiles.SOMATIC_SNV_VERSION),
-    MtbFileType.GERM_CNV: 'QBIC_GERMLINE_CNV_V{}'.format(cx_profiles.GERMLINE_CNV_VERSION),
-    MtbFileType.SOM_CNV: 'QBIC_SOMATIC_CNV_V{}'.format(cx_profiles.SOMATIC_CNV_VERSION),
-    MtbFileType.SOM_SV: 'QBIC_SOMATIC_SV_V{}'.format(cx_profiles.SOMATIC_SV_VERSION),
-    MtbFileType.META: 'QBIC_METADATA_V{}'.format(cx_profiles.METADATA_VERSION)
+    MtbFileType.GERM_SNV: 'QBIC_GERMLINE_SNV_V{}'.format(GERMLINE_SNV_VERSION) ,
+    MtbFileType.SOM_SNV: 'QBIC_SOMATIC_SNV_V{}'.format(SOMATIC_SNV_VERSION),
+    MtbFileType.GERM_CNV: 'QBIC_GERMLINE_CNV_V{}'.format(GERMLINE_CNV_VERSION),
+    MtbFileType.SOM_CNV: 'QBIC_SOMATIC_CNV_V{}'.format(SOMATIC_CNV_VERSION),
+    MtbFileType.SOM_SV: 'QBIC_SOMATIC_SV_V{}'.format(SOMATIC_SV_VERSION),
+    MtbFileType.META: 'QBIC_METADATA_V{}'.format(METADATA_VERSION)
 }
 
 class MtbConverter():

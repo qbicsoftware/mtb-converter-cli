@@ -52,10 +52,12 @@ def push(args):
 
 def start_conversion(args):
     """Starts the file extraction, parsing and writes the
-    output in XML files"""
-    path_zipfile = args.i
-    barcode = getbarcode(path_zipfile)
-    converter = MtbConverter(ZipFile(path_zipfile), barcode)
+    output in an XML file."""
+    path_zipfile = args.archive
+    patient_code = args.patientID
+    sample_code = getbarcode(path_zipfile)
+    converter = MtbConverter(ZipFile(path_zipfile), sample_code=sample_code,
+        patient_code=patient_code)
     converter.convert()
 
 
