@@ -119,7 +119,7 @@ class MtbConverter():
             filename = zipinfo.filename
             assigned_type = self._getfiletype(filename)
             if self._sample_code not in filename:
-                raise MtbUnknownsample_code("Could not find sample_code {} in file '{}'. All"
+                raise MtbUnknownBarcode("Could not find sample_code {} in file '{}'. All"
                 " files need to contain the same "
                 "sample_code as the zip archive.".format(self._sample_code, filename))
 

@@ -27,7 +27,7 @@ class ArchiveTests(unittest.TestCase):
         ziparchive.infolist.return_value = [
             zipinfo_1
         ]
-        MtbConverter(ziparchive, "QUK17001AE")
+        MtbConverter(ziparchive, "QUK17001AE", "QUK17ENTITY-1")
 
 
     @patch('zipfile.ZipFile')
@@ -40,7 +40,7 @@ class ArchiveTests(unittest.TestCase):
         ziparchive.infolist.return_value = [
             zipinfo_1
         ]
-        MtbConverter(ziparchive, "QUK17001")
+        MtbConverter(ziparchive, "QUK17001", "QUK17ENTITY-1")
 
     @raises(MtbUnknownBarcode)
     @patch('zipfile.ZipFile')
@@ -52,4 +52,4 @@ class ArchiveTests(unittest.TestCase):
         ziparchive.infolist.return_value = [
             zipinfo_1
         ]
-        MtbConverter(ziparchive, barcode)
+        MtbConverter(ziparchive, barcode, "QUK17ENTITY-1")
