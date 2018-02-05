@@ -9,3 +9,6 @@ class MtbIncompleteArchive(Exception):
 
 class MtbUnknownBarcode(Exception):
     """Raise, if not all archive members contain the same barcode."""
+
+class NoReferenceIdFound(Exception):
+    """Raise, if the a flexible data set instance has no reference id."""
