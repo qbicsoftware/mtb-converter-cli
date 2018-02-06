@@ -69,7 +69,50 @@ The information is encoded in the six TSV files, following the specification des
 
 push
 ~~~~
-*This section needs to be filled with information.*
+The ``push`` command enables the import of a CentraXX patient XML into the CentraXX system via CentraXX's REST API. With the ``-h`` flag, you get an overview of the arguments:
+
+.. code-block:: bash
+
+    Mtbconverter version 0.1.
+    usage: push [-h] [-c config] [-t] [--check] patientdata
+
+    Import a converted XML file into CentraXX.
+
+    positional arguments:
+      patientdata  Converted XML file from an MTB ZIP archive with the variant
+                   information.
+
+    optional arguments:
+      -h, --help   show this help message and exit
+      -c config    Configuration file with settings for the remote CentraXX
+                   system. (Default: /etc/centraxx.config)
+      -t, --test   Import to the CentraXX test system.
+      --check      Check the connection to CentraXX.
+      
+``mtbconverter`` tries to parse a configuration file by default in ``/etc/centraxx.config``, but you can also specify another path via the ``-c`` option.
+
+**CentraXX configuration file**
+The configuration file contains information about CentraXX's server location and authentication data. An example config file shall look similar to this:
+
+.. code-block:: bash
+
+    [CENTRAXX_TEST]
+    authuser=myuser
+    password=mypassword
+    serveraddr=127.0.0.1:443
+    protocol=https
+    infopath=%(protocol)s://%(serveraddr)s/centraxx/rest/info
+
+    [CENTRAXX]
+    authuser=myuser
+    password=mypassword
+    serveraddr=xxx.x.xxx.xxx:xxxx
+    protocol=https
+    infopath=%(protocol)s://%(serveraddr)s/centraxx/rest/info
+
+The ``[...]`` parts are the sections of the configuration. ``mtbconverter`` currently supports "CENTRAXX" and "CENTRAXX_TEST".  If you specify the "CENTRAXX_TEST" section, then you can perform operations to a target test system using the ``-t`` option flag.
+
+If you supply the ``infopath`` keyword with a valid path, you can check the connection to CentraXX easily by providing the ``--check`` option flag. Either you will get an timeout response, if the target server is not accessible, or you will see the return code with message.
 
 catalogue
 ~~~~~~~~~
