@@ -8,7 +8,7 @@ python:
 install:
   - pip install codecov
   - pip install mtbparser
-  - pip install PyXB
+  - pip install 'PyXB==1.2.4'
 
 script: 
   - nosetests --with-coverage
