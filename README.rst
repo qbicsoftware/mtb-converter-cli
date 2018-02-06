@@ -10,6 +10,10 @@ A Python command line tool that parses and converts diagnostic variant data for 
 .. |codecov| image:: https://codecov.io/gh/qbicsoftware/qbic.mtbconverter/branch/master/graph/badge.svg
   :target: https://codecov.io/gh/qbicsoftware/qbic.mtbconverter
 
+.. contents:: Table of Contents
+   :depth: 2
+
+
 Commands
 ---------
 
