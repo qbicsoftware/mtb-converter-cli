@@ -1,5 +1,6 @@
 """mtbconverter.__main__: executed, when mtbconverter directory is called as a script"""
 import sys
+import configparser
 from mtbparser import snv_utils
 from .mtbconverter import MtbConverter
 from .argparser import *
@@ -8,6 +9,8 @@ from zipfile import ZipFile
 from .cx_controlled_vocabulary import ControlledVocabulary
 from .cx_parameters import Parameters
 from .cx_profiles import *
+from .cx_connect import CXXConnect
+from .mtbconverter_exceptions import ParseConfigFileException
 
 __version__ = "0.1.0"
 
@@ -41,8 +44,17 @@ def main(args=None):
 def push(args):
     """Establish a connection to CentraXX and tries to
     import a given XML file."""
-    print(args.c)
-    print(args.patientdata)
+    config = configparser.ConfigParser()
+    config.read(args.c)
+    
+    if not config.sections():
+        raise ParseConfigFileException('No sections found in the config!')
+
+    section = 'CENTRAXX'
+    if args.test: section = 'CENTRAXX_TEST'
+  
+    cxxconnect = CXXConnect(**config[section])
+    cxxconnect.check()
     
 
 def start_conversion(args):

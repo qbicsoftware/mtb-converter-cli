@@ -12,3 +12,6 @@ class MtbUnknownBarcode(Exception):
 
 class NoReferenceIdFound(Exception):
     """Raise, if the a flexible data set instance has no reference id."""
+
+class ParseConfigFileException(Exception):
+    """Raise, when the parsing of the config file fails"""
