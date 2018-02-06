@@ -14,5 +14,6 @@ def push_parser():
     parser = argparse.ArgumentParser(prog="push", description="Import a converted XML file "
     "into CentraXX.")
     parser.add_argument('-c', metavar="config", default="/etc/centraxx.config", help='Configuration file with settings for the remote CentraXX system. (Default: /etc/centraxx.config)')
-    parser.add_argument('data.xml', help='Converted XML file from ZIP archive with the variant information.')
+    parser.add_argument('-t', '--test', action='store_true', help='Import to the CentraXX test system.')
+    parser.add_argument('patientdata', help='Converted XML file from an MTB ZIP archive with the variant information.')
     return parser

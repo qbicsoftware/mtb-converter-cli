@@ -8,14 +8,11 @@ from zipfile import ZipFile
 from .cx_controlled_vocabulary import ControlledVocabulary
 from .cx_parameters import Parameters
 from .cx_profiles import *
-import logging
 
 __version__ = "0.1.0"
 
 COMMANDS = ['convert', 'push', 'catalogue']
 
-LOG = logging.getLogger(__name__)
-logging.basicConfig(stream=sys.stderr, level=logging.INFO) 
 
 def main(args=None):
     """The main routine, parsing arguments and calls the converter"""
@@ -44,11 +41,9 @@ def main(args=None):
 def push(args):
     """Establish a connection to CentraXX and tries to
     import a given XML file."""
-    try:
-        open(args.c)
-    except IOError as err:
-        LOG.error(err)
-
+    print(args.c)
+    print(args.patientdata)
+    
 
 def start_conversion(args):
     """Starts the file extraction, parsing and writes the
