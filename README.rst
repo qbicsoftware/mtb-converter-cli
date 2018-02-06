@@ -35,14 +35,19 @@ The ``convert`` command tells the mtbconverter to parse the necessary MTB inform
 
 .. code-block:: bash
 
-  Mtbconverter version 0.1
-  usage: convert [-h] [-i archive.zip]
+  Mtbconverter version 0.1.
+  usage: convert [-h] archive patientID
 
   Conversion of variant information into CentraXX schema conform XML.
 
+  positional arguments:
+    archive     ZIP archive containing the variant information files.
+    patientID   A QBiC patient ID.
+
   optional arguments:
-    -h, --help      show this help message and exit
-    -i archive.zip  ZIP archive containing the variant information files.
+    -h, --help  show this help message and exit
+    
+The output is an XML according to the CetraXX DataExchange specification, that reflects the information parsed from the MTB ZIP archive and can be imported into CentraXX, for example with the ``mtbconverter push`` command.
 
 **Archive format specification**
 The ZIP archive name needs to carry the QBIC barcode, and the same needs to present in all files within the archive. This is just to make sure, that the files indeed belong to the same sample.
