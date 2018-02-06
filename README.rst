@@ -17,7 +17,7 @@ If you provide the ``-h`` argument, you get the command overview:
 
 .. code-block:: bash
   
-  Mtbconverter version 0.1.0.
+  Mtbconverter version 0.1
   Usage: mtbconverter.py [-h] [command]
 
   command:
@@ -35,7 +35,7 @@ The ``convert`` command tells the mtbconverter to parse the necessary MTB inform
 
 .. code-block:: bash
 
-  Mtbconverter version 0.1.0.
+  Mtbconverter version 0.1
   usage: convert [-h] [-i archive.zip]
 
   Conversion of variant information into CentraXX schema conform XML.
