@@ -11,6 +11,7 @@ from .cx_parameters import Parameters
 from .cx_profiles import *
 from .cx_connect import CXXConnect
 from .mtbconverter_exceptions import ParseConfigFileException
+from requests.exceptions import ConnectTimeout
 
 __version__ = "0.1.0"
 
@@ -52,10 +53,20 @@ def push(args):
 
     section = 'CENTRAXX'
     if args.test: section = 'CENTRAXX_TEST'
-  
+
     cxxconnect = CXXConnect(**config[section])
+
+    if args.check: 
+        try:
+            response = cxxconnect.check()
+            print(response)
+        except ConnectTimeout:
+            print("[ERROR]: The connection timed out.")
+            sys.exit(1)
+        sys.exit(0)
+        
     cxxconnect.check()
-    
+     
 
 def start_conversion(args):
     """Starts the file extraction, parsing and writes the

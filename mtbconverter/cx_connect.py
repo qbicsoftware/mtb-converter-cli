@@ -16,6 +16,8 @@ class CXXConnect():
     
     def check(self):
         """Access the info path of CentraXX's API"""
-        print('This will connect to CentraXX soon!')
+        print('Trying to connect to CentraXX server...')
         print(self._infopath)
+        response = requests.get(self._infopath, verify=False, timeout=5)
+        return response
 
