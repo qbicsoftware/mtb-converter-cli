@@ -137,6 +137,7 @@ After executing ``catalogue``, mtbconverter will create 8 XML files:
 Changelog
 ---------
 Find all the version changes of ``mtbconverter`` here
+
 2018-02-06: v0.1
 ~~~~~~~~~
 First official release, not yet supporting all of the desired push options to CentraXX, but coming soon!
