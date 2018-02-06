@@ -134,5 +134,17 @@ After executing ``catalogue``, mtbconverter will create 8 XML files:
 8. metadata_profiles_centraxx.xml: The profile for metadata, containing the diagnosis.
 
 
+Changelog
+---------
+Find all the version changes of ``mtbconverter`` here
+2018-02-06: v0.1
+~~~~~~~~~
+First official release, not yet supporting all of the desired push options to CentraXX, but coming soon!
+
+Author
+------
+This code is provided by Sven Fillinger, QBiC, University of Tübingen.
+
+
 .. _library: https://github.com/qbicsoftware/qbic.mtbparser/blob/master/README.md
   
