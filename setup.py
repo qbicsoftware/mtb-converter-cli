@@ -13,7 +13,7 @@ setup(
     install_requires=['mtbparser>=0.2.1', 'PyXB==1.2.4'],
     entry_points={
         'console_scripts': [
-            'mtbconverter = mtbconverter:__main__']
+            'mtbconverter = mtbconverter:__main__.py']
     },
     classifiers=[
         "Programming Language :: Python",
