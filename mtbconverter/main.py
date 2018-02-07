@@ -12,7 +12,7 @@ from .cx_connect import CXXConnect
 from .mtbconverter_exceptions import ParseConfigFileException
 from requests.exceptions import ConnectTimeout
 
-__version__ = "0.1"
+__version__ = "0.1.1"
 
 COMMANDS = ['convert', 'push', 'catalogue']
 
