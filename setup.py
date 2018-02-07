@@ -9,7 +9,7 @@ setup(
     long_description=open('README.rst').read(),
     author='Sven Fillinger',
     author_email='sven.fillinger@qbic.uni-tuebingen.de',
-    packages=['mtbconverter', 'PyXB'],
+    packages=['mtbconverter'],
     install_requires=['mtbparser>=0.2.1', 'PyXB==1.2.4'],
     entry_points={
         'console_scripts': [
