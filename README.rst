@@ -138,6 +138,10 @@ Changelog
 ---------
 Find all the version changes of ``mtbconverter`` here
 
+2018-02-07: v0.1.1
+~~~~~~~~~
+Small bug fixes, add entry point, so mtbconverter can be used as command line tool
+
 2018-02-06: v0.1
 ~~~~~~~~~
 First official release, not yet supporting all of the desired push options to CentraXX, but coming soon!
