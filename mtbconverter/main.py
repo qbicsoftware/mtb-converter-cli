@@ -26,8 +26,6 @@ def main(args=None):
     if len(args) < 2:
         print(help_message())
         sys.exit(1)
-    if "-h" in args[1] or "--help" in args[1]:
-        print(help_message())
     if args[1] not in COMMANDS:
         print(help_message())
     if args[1] == 'convert':
