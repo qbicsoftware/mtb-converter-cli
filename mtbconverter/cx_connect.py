@@ -13,11 +13,12 @@ class CXXConnect():
         self._authuser = authuser
         self._password = password
         self._infopath = kwargs['infopath'] if 'infopath' in kwargs else ""
+        self._timout = kwargs['timout'] if 'timeout' in kwargs else 60
     
     def check(self):
         """Access the info path of CentraXX's API"""
         print('Trying to connect to CentraXX server...')
         print(self._infopath)
-        response = requests.get(self._infopath, verify=False, timeout=5)
+        response = requests.get(self._infopath, verify=False, timeout=self._timeout)
         return response
 
