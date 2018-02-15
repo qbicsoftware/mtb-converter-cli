@@ -42,7 +42,7 @@ class CXXConnect():
         #files = {'file': io.open(filepath, 'r', encoding='utf8')}
         xmlContent = codecs.open(xmlfile, encoding='utf-8')
         #xmlContent = open(filepath, 'rb')
-        response = requests.post(importUrl, data=xmlContent, auth=restAuth, headers=headers, verify=True)
+        response = requests.post(importUrl, data=xmlContent, auth=restAuth, headers=headers, verify=False)
         return response
     
     def _triggerimport(self, xmlfile):
@@ -50,7 +50,7 @@ class CXXConnect():
         importUrl = self._importqueue + '/' + filename + '/start'
         restAuth = HTTPBasicAuth(self._authuser, self._password)
         headers = {}
-        response = requests.post(importUrl, headers=headers, auth=restAuth, verify=True)
+        response = requests.post(importUrl, headers=headers, auth=restAuth, verify=False)
         return response
 
     
