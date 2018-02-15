@@ -33,6 +33,7 @@ class DataSetInstance():
         timestamp = datetime.datetime.now().isoformat(timespec='milliseconds')
         flex_dataset = cx.FlexibleDataSetInstanceType()
         flex_dataset.FlexibleDataSetTypeRef = self._version
+        flex_dataset.FlexibleDataSetInstanceRef = self._reference
         flex_dataset.InstanceName = '{}_increment{}_{}'.format(
             self._version, self._instance, timestamp)
         flex_dataset.DateType = cx.DateType(Date=timestamp, Precision='EXACT')
