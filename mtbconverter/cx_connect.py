@@ -50,12 +50,11 @@ class CXXConnect():
     
     def _triggerimport(self, xmlfile):
         filename = os.path.basename(xmlfile.strip())
-        importUrl = self._importqueue + '/' + filename + '/start'
+        importUrl = self._importqueue + '/start'
         restAuth = HTTPBasicAuth(self._authuser, self._password)
         headers = {}
         response = requests.post(importUrl, headers=headers, auth=restAuth, verify=False)
         return response
-
     
     def _getimports(self):
         filename = os.path.basename(filepath.strip())
