@@ -41,8 +41,11 @@ class CXXConnect():
         headers = {'Content-Type': 'application/xml'}
         #files = {'file': io.open(filepath, 'r', encoding='utf8')}
         xmlContent = codecs.open(xmlfile, 'rb', encoding='utf-8')
+        xml_string = ""
+        for content in xmlContent.readlines():
+            xml_string += content
         #xmlContent = open(filepath, 'rb')
-        response = requests.post(importUrl, data=xmlContent, auth=restAuth, headers=headers, verify=False)
+        response = requests.post(importUrl, data=xml_string, auth=restAuth, headers=headers, verify=False)
         return response
     
     def _triggerimport(self, xmlfile):
