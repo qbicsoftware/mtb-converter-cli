@@ -11,7 +11,7 @@ setup(
     author='Sven Fillinger',
     author_email='sven.fillinger@qbic.uni-tuebingen.de',
     packages=['mtbconverter'],
-    install_requires=['mtbparser>=0.2.1', 'PyXB==1.2.4', 'requests'],
+    install_requires=['mtbparser>=0.2.7', 'PyXB==1.2.4', 'requests'],
     entry_points={
         'console_scripts': [
             'mtbconverter = mtbconverter.main:main']

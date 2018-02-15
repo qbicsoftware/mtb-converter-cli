@@ -3,6 +3,8 @@ type for the patient import"""
 
 import uuid
 import datetime
+import mtbconverter.cxxpy as cx
+from .cx_utils import *
 
 class DataSetInstance():
 
@@ -32,14 +34,36 @@ class DataSetInstance():
         flex_dataset = cx.FlexibleDataSetInstanceType()
         flex_dataset.FlexibleDataSetTypeRef = self._version
         flex_dataset.InstanceName = '{}_increment{}_{}'.format(
-            self._version, instance, timestamp)
+            self._version, self._instance, timestamp)
         flex_dataset.DateType = cx.DateType(Date=timestamp, Precision='EXACT')
         snv_columns = []
-        for key, value in self._snv_item:
+        for key, value in self._snv_item.get_item().items():
             value_type = self._valuetypefromfield(key)
-            snv_columns.append(value_type(FlexibleValueTypeRef=cx_utils.CV_PREFIX + key,
-                Value=value))
-        flex_dataset.append(snv_columns)
+            value_type.FlexibleValueTypeRef = CV_PREFIX + key.lower()
+            value_type.Value = value
+            snv_columns.append(value_type)
+        
+        dec_type = []
+        enum_type = []
+        int_type = []
+        str_type = []
+
+        for col in snv_columns:
+            class_type = col.__class__.__name__
+            if "String" in class_type:
+                str_type.append(col)
+            if "Enum" in class_type:
+                enum_type.append(col)
+            if "Integer" in class_type:
+                int_type.append(col)
+            if "Decimal" in class_type:
+                dec_type.append(col)
+
+        flex_dataset.StringValue = str_type
+        flex_dataset.EnumerationValue = enum_type
+        flex_dataset.IntegerValue = int_type
+        flex_dataset.DecimalValue = dec_type
+
         return flex_dataset
 
     def _valuetypefromfield(self, field):

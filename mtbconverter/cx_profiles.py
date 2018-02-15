@@ -30,8 +30,8 @@ GCNV_FIELD_TYPES = ["QBIC_size", "QBIC_type", "QBIC_copy_number", "QBIC_gene", "
 
 SV_FIELD_TYPES = ["QBIC_type", "QBIC_gene", "QBIC_effect", "QBIC_left_bp", "QBIC_right_bp"]
 
-METADATA_TYPES = ["QBIC_diagnosis", "QBIC_tumor_content", "QBIC_pathogenic_germ", "QBIC_mutational_load",
-"QBIC_chrom_instability", "QBIC_quality_flag", "QBIC_reference_genome"]
+METADATA_TYPES = ["QBIC_diagnosis", "QBIC_tumor_content", "QBIC_pathogenic_germline", "QBIC_mutational_load",
+"QBIC_chromosomal_instability", "QBIC_quality_flags", "QBIC_reference_genome"]
 
 class SSNVProfiles():
 

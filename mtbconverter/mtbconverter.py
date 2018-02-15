@@ -6,6 +6,7 @@ to CentraXX.
 import os
 import sys
 import uuid
+import shutil
 from zipfile import ZipFile
 from mtbparser.snv_utils import *
 from .mtbfiletype import MtbFileType
@@ -53,7 +54,6 @@ class MtbConverter():
         os.mkdir(self._tmp_dir)
         self._verify()
         self._extract()
-        self._cleanup()
 
     def _extract(self):
         try:
@@ -66,7 +66,7 @@ class MtbConverter():
     def convert(self):
         print("Conversion started")
         flex_ds_instances = []
-        datetime = datetime.isoformat(datetime.now())
+        date_time = datetime.isoformat(datetime.now())
         counter = 1
 
         # First, we have to build a flexible data type
@@ -81,7 +81,7 @@ class MtbConverter():
                 ds_instance = DataSetInstance(
                     header_type=FILETYPE_HEADER[mtb_filetype],
                     snv_item=snv_item,
-                    date=datetime,
+                    date=date_time,
                     version=version,
                     instance=counter
                 )
@@ -94,7 +94,7 @@ class MtbConverter():
         patient_ds = PatientDataSet(
             qbic_pat_id=self._patient_code,
             qbic_sample_id=self._sample_code,
-            datetime=datetime,
+            datetime=date_time,
             datasetinstance_list=flex_ds_instances
         )
         
@@ -102,8 +102,8 @@ class MtbConverter():
         # object, that can be consumed by CentraXX
         flex_data_sets = [ds.datasetinstance() for ds in flex_ds_instances]
         self._root.Source = 'XMLIMPORT'
-        effect_data = cx.EffectDataType(PatientDataSet=patient_ds.patientdataset())
-        effect_data.append(flex_data_sets)
+        effect_data = cx.EffectDataType(PatientDataSet=[patient_ds.patientdataset()])
+        effect_data.FlexibleDataSetInstance = flex_data_sets
         self._root.EffectData = effect_data   
         
         root_dom = self._root.toDOM()
@@ -112,6 +112,9 @@ class MtbConverter():
             'http://www.kairos-med.de ../CentraXXExchange.xsd')
         root_dom.documentElement.setAttributeNS(
             xmlns.uri(), 'xmlns:xsi', xsi.uri())
+
+        # Clean up the temp extraction files from the archive
+        self._cleanup()
         return root_dom.toprettyxml(encoding='utf-8')
 
     def _verify(self):
@@ -135,7 +138,7 @@ class MtbConverter():
         
     def _cleanup(self):
         print(self._tmp_dir)
-        os.removedirs(self._tmp_dir)
+        shutil.rmtree(self._tmp_dir)
 
     def _getfiletype(self, filename):
         for filetype in MtbFileType:

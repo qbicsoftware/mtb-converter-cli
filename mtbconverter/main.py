@@ -73,7 +73,11 @@ def start_conversion(args):
     sample_code = getbarcode(path_zipfile)
     converter = MtbConverter(ZipFile(path_zipfile), sample_code=sample_code,
         patient_code=patient_code)
-    converter.convert()
+    patient_xml = converter.convert()
+    output_file = './{}_{}_patient_centraxx.xml'.format(patient_code, sample_code)
+    with open(output_file, "w") as fh:
+        fh.write(patient_xml.decode('utf-8'))
+    sys.exit(0)
 
 
 def build_catalogue():

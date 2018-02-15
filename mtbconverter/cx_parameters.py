@@ -111,15 +111,15 @@ class Parameters():
     def _addqualityflags(self, flexible_value_ci):
         """Add quality flags info"""
         flex_type = cx.FlexibleStringType()
-        flex_type.Code = "{}quality_flag".format(cxu.CV_PREFIX)
+        flex_type.Code = "{}quality_flags".format(cxu.CV_PREFIX)
         flex_type.Name = "Quality flags"
         flex_type.ShortName = "Quality flags"
         flex_type.Description = "Quality flags information."
 
-        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='quality_flag')
-        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='quality_flag')
-        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='quality_flag')
-        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='quality_flag')
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='quality_flags')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='quality_flags')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='quality_flags')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='quality_flags')
 
         flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
         flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
@@ -129,7 +129,7 @@ class Parameters():
     def _addchromosomalinstability(self, flexible_value_ci):
         """Add chromosomal instability info"""
         flex_type = cx.FlexibleStringType()
-        flex_type.Code = "{}chrom_instability".format(cxu.CV_PREFIX)
+        flex_type.Code = "{}chromosomal_instability".format(cxu.CV_PREFIX)
         flex_type.Name = "Chromosomal instability"
         flex_type.ShortName = "Chr. instab."
         flex_type.Description = "Chromosomal instability information."
@@ -147,7 +147,7 @@ class Parameters():
     def _addpathogenicinfo(self, flexible_value_ci):
         """Add field for pathogenic germline info"""
         flex_type = cx.FlexibleStringType()
-        flex_type.Code = "{}pathogenic_germ".format(cxu.CV_PREFIX)
+        flex_type.Code = "{}pathogenic_germline".format(cxu.CV_PREFIX)
         flex_type.Name = "Pathogenic germline"
         flex_type.ShortName = "Path. germline"
         flex_type.Description = "Presence of pathogenic germline information."
