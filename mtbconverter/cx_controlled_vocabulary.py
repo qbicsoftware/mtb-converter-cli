@@ -60,7 +60,7 @@ class ControlledVocabulary:
             multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='{}{}_{}'.format(cxu.CV_PREFIX, 'mutational_load', load))
             item = cx.UsageEntryType()
             item.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
-            item.Code = '{}{}_{}'.format(cxu.CV_PREFIX, 'mutational_load', load)
+            item.Code = '{}{}'.format(cxu.CV_PREFIX, load)
             item.Category = "false"
             self._catalogue_data.append(item)
         
