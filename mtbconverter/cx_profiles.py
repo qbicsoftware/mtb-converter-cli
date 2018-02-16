@@ -170,8 +170,8 @@ class SCNVProfiles():
             Systemwide="false",
             FlexibleDataSetType="MEASUREMENT",
             Category="LABOR")
-        multi_lang_de = cx.MultilingualEntryType(Lang='de', Value='Somatic CNV V{:.1f}'.format(SOMATIC_CNV_VERSION))
-        multi_lang_en = cx.MultilingualEntryType(Lang='en', Value='Somatic CNV V{:.1f}'.format(SOMATIC_CNV_VERSION))
+        multi_lang_de = cx.MultilingualEntryType(Lang='de', Value='QBIC Somatic CNV V{:.1f}'.format(SOMATIC_CNV_VERSION))
+        multi_lang_en = cx.MultilingualEntryType(Lang='en', Value='QBIC Somatic CNV V{:.1f}'.format(SOMATIC_CNV_VERSION))
         flexible_data_set.NameMultilingualEntries = [multi_lang_de, multi_lang_en]      
     
         flexible_data_set.FlexibleValueComplexRefs = [
@@ -230,8 +230,8 @@ class GCNVProfiles():
             Systemwide="false",
             FlexibleDataSetType="MEASUREMENT",
             Category="LABOR")
-        multi_lang_de = cx.MultilingualEntryType(Lang='de', Value='Germline CNV V{:.1f}'.format(GERMLINE_CNV_VERSION))
-        multi_lang_en = cx.MultilingualEntryType(Lang='en', Value='Germline CNV V{:.1f}'.format(GERMLINE_CNV_VERSION))
+        multi_lang_de = cx.MultilingualEntryType(Lang='de', Value='QBIC Germline CNV V{:.1f}'.format(GERMLINE_CNV_VERSION))
+        multi_lang_en = cx.MultilingualEntryType(Lang='en', Value='QBIC Germline CNV V{:.1f}'.format(GERMLINE_CNV_VERSION))
         flexible_data_set.NameMultilingualEntries = [multi_lang_de, multi_lang_en]      
     
         flexible_data_set.FlexibleValueComplexRefs = [
@@ -290,8 +290,8 @@ class SVProfiles():
             Systemwide="false",
             FlexibleDataSetType="MEASUREMENT",
             Category="LABOR")
-        multi_lang_de = cx.MultilingualEntryType(Lang='de', Value='Somatic SV V{:.1f}'.format(SOMATIC_SV_VERSION))
-        multi_lang_en = cx.MultilingualEntryType(Lang='en', Value='Somatic SV V{:.1f}'.format(SOMATIC_SV_VERSION))
+        multi_lang_de = cx.MultilingualEntryType(Lang='de', Value='QBIC Somatic SV V{:.1f}'.format(SOMATIC_SV_VERSION))
+        multi_lang_en = cx.MultilingualEntryType(Lang='en', Value='QBIC Somatic SV V{:.1f}'.format(SOMATIC_SV_VERSION))
         flexible_data_set.NameMultilingualEntries = [multi_lang_de, multi_lang_en]      
     
         flexible_data_set.FlexibleValueComplexRefs = [
@@ -350,8 +350,8 @@ class MetadataProfiles():
             Systemwide="false",
             FlexibleDataSetType="MEASUREMENT",
             Category="LABOR")
-        multi_lang_de = cx.MultilingualEntryType(Lang='de', Value='Metadata V{:.1f}'.format(METADATA_VERSION))
-        multi_lang_en = cx.MultilingualEntryType(Lang='en', Value='Metadata V{:.1f}'.format(METADATA_VERSION))
+        multi_lang_de = cx.MultilingualEntryType(Lang='de', Value='QBIC Metadata V{:.1f}'.format(METADATA_VERSION))
+        multi_lang_en = cx.MultilingualEntryType(Lang='en', Value='QBIC Metadata V{:.1f}'.format(METADATA_VERSION))
         flexible_data_set.NameMultilingualEntries = [multi_lang_de, multi_lang_en]      
     
         flexible_data_set.FlexibleValueComplexRefs = [

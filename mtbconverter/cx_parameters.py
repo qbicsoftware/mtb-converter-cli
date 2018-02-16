@@ -152,10 +152,10 @@ class Parameters():
         flex_type.ShortName = "Path. germline"
         flex_type.Description = "Presence of pathogenic germline information."
 
-        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='pathogenic_germ')
-        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='pathogenic_germ')
-        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='pathogenic_germ')
-        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='pathogenic_germ')
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='pathogenic_germline')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='pathogenic_germline')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='pathogenic_germline')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='pathogenic_germline')
 
         flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
         flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
@@ -337,10 +337,10 @@ class Parameters():
         flex_enum_value.ChoiseType = "SELECTONE"
         flex_enum_value.Description = "Enumeration of different mutational load flags"
 
-        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='load')
-        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='load')
-        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='load')
-        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='load')
+        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='mutational load')
+        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='mutational load')
+        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='mutational load')
+        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='mutational load')
 
         flex_enum_value.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
         flex_enum_value.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]

@@ -34,8 +34,8 @@ class PatientDataSet():
             SampleTypeCatalogueTypeRef='TISSUE_OTH', SampleReceptacleTypeRef='ORG',
             SampleKind='TISSUE', SopDeviation='false', HasChildren='false', SampleLocationRef='QBIC_STORAGE')
         sample_id_container = cx.SampleIDContainerType()
-        flex_id_1 = cx.FlexibleIDType(key='SAMPLEID', value_=self._qbic_sample_id)
-        flex_id_2 = cx.FlexibleIDType(key='QBIC_SAMPLE_ID', value_=self._qbic_sample_id)
+        flex_id_1 = cx.FlexibleIDType(key='SAMPLEID', value_=self._qbic_sample_id + '_VIRT')
+        flex_id_2 = cx.FlexibleIDType(key='QBIC_SAMPLE_ID', value_=self._qbic_sample_id + '_VIRT')
 
         # Add the flex IDs to the sample container
         sample_id_container.append(flex_id_1)

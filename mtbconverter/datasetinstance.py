@@ -74,7 +74,7 @@ class DataSetInstance():
         """Determine value type from a field"""
         if field.lower() in ['tumor_content', 'allele_frequency_tumor', 'coverage']:
             return cx.FlexibleDecimalDataType()
-        if field.lower() in ['genotype', 'mutational_load', 'ref', 'effects', 'chromosomes']:
+        if field.lower() in ['genotype', 'mutational_load', 'ref', 'effect', 'chromosomes', 'chr']:
             return cx.FlexibleEnumerationDataType()
         if field.lower() in ['start', 'end']:
             return cx.FlexibleIntegerDataType()
