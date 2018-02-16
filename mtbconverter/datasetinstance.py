@@ -42,7 +42,7 @@ class DataSetInstance():
             value_type = self._valuetypefromfield(key)
             value_type.FlexibleValueTypeRef = CV_PREFIX + key.lower()
             if value_type.__class__.__name__ == 'FlexibleEnumerationDataType':
-                value_type.Value = [value]
+                value_type.Value = [CV_PREFIX + value]
             else: 
                 value_type.Value = value
             snv_columns.append(value_type)
