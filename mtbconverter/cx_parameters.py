@@ -345,7 +345,7 @@ class Parameters():
         flex_enum_value.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
         flex_enum_value.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
 
-        flex_enum_value.UsageEntryTypeRef = ["{}{}_{}".format(cxu.CV_PREFIX, 'mutational_load', load) for load in cxu.CV_MUT_LOAD]
+        flex_enum_value.UsageEntryTypeRef = ["{}{}".format(cxu.CV_PREFIX, load) for load in cxu.CV_MUT_LOAD]
         flexible_value_ci.append(flex_enum_value)
     
     def _addstart(self, flexible_value_ci):
