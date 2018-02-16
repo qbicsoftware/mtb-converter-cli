@@ -61,15 +61,11 @@ class PatientDataSet():
                 " for the given flexible dataset (SampleId: {})".format(self._qbic_sample_id))
             flex_dsref_list.append(ref)
         
-        print(flex_dsref_list)
-        
+    
         master_sample.FlexibleDataSetRef = flex_dsref_list
         sample_data = cx.SampleDataType()
         sample_data.append(master_sample)
 
         patient_data_set.SampleData = sample_data
-
-        with open('output.xml', 'w') as fh:
-            fh.write(patient_data_set.toDOM(element_name='PatientDataSet').toprettyxml(encoding="utf-8").decode('utf-8'))
 
         return patient_data_set           
