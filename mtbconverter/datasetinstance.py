@@ -40,7 +40,10 @@ class DataSetInstance():
         for key, value in self._snv_item.get_item().items():
             value_type = self._valuetypefromfield(key)
             value_type.FlexibleValueTypeRef = CV_PREFIX + key.lower()
-            value_type.Value = value
+            if value_type.__class__.__name__ == 'FlexibleEnumerationDataType':
+                value_type.Value = [value]
+            else: 
+                value_type.Value = value
             snv_columns.append(value_type)
         
         dec_type = []
@@ -68,11 +71,11 @@ class DataSetInstance():
 
     def _valuetypefromfield(self, field):
         """Determine value type from a field"""
-        if field in ['tumor_content', 'allele_frequency_tumor', 'coverage']:
+        if field.lower() in ['tumor_content', 'allele_frequency_tumor', 'coverage']:
             return cx.FlexibleDecimalDataType()
-        if field in ['genotype', 'mutational_load', 'ref', 'effects', 'chromosomes']:
+        if field.lower() in ['genotype', 'mutational_load', 'ref', 'effects', 'chromosomes']:
             return cx.FlexibleEnumerationDataType()
-        if field in ['start', 'end']:
+        if field.lower() in ['start', 'end']:
             return cx.FlexibleIntegerDataType()
         return cx.FlexibleStringDataType()
         
