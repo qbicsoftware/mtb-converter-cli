@@ -44,6 +44,7 @@ def push(args):
     import a given XML file."""
     config = configparser.ConfigParser()
     config.read(args.c)
+    xmlfile = args.patientdata
     
     if not config.sections():
         raise ParseConfigFileException('No sections found in the config!')
@@ -62,7 +63,7 @@ def push(args):
             sys.exit(1)
         sys.exit(0)
         
-    cxxconnect.check()
+    cxxconnect.push(xmlfile)
      
 
 def start_conversion(args):
