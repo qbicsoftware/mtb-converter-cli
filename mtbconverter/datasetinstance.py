@@ -73,11 +73,9 @@ class DataSetInstance():
 
     def _valuetypefromfield(self, field):
         """Determine value type from a field"""
-        if field.lower() == 'effect' and str(self._header_type.__name__) is str(mtbparser.snv_utils.CnvHeader.__name__):
-            return cx.FlexibleStringDataType()
         if field.lower() in ['tumor_content', 'allele_frequency_tumor', 'coverage']:
             return cx.FlexibleDecimalDataType()
-        if field.lower() in ['genotype', 'mutational_load', 'ref', 'effect', 'chromosomes', 'chr']:
+        if field.lower() in ['genotype', 'mutational_load', 'ref', 'chromosomes', 'chr']:
             return cx.FlexibleEnumerationDataType()
         if field.lower() in ['start', 'end']:
             return cx.FlexibleIntegerDataType()
