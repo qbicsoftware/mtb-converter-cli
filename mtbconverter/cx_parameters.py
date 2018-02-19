@@ -36,7 +36,6 @@ class Parameters():
         self._addfunctionalclass(flexible_value_ci)
         self._addmutationalload(flexible_value_ci)
         self._addgenotype(flexible_value_ci)
-        self._addeffects_germline(flexible_value_ci)
         self._addexons(flexible_value_ci)
         self._addend(flexible_value_ci)
         self._addtype(flexible_value_ci)
@@ -290,23 +289,6 @@ class Parameters():
 
         flexible_value_ci.append(flex_type)
 
-    def _addeffects_germline(self, flexible_value_ci):
-        """Add the effects for germline SNVs"""
-        flex_type = cx.FlexibleStringType()
-        flex_type.Code = "{}effect_germline".format(cxu.CV_PREFIX)
-        flex_type.Name = "Effect prediction in germline SNV"
-        flex_type.ShortName = "Pred. germline effect"
-        flex_type.Description = "ACMG-based effect of variant"
-
-        multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='effect_germline')
-        multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='effect_germline')
-        multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='effect_germline')
-        multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='effect_germline')
-
-        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
-        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
-
-        flexible_value_ci.append(flex_type)
         
     def _addgenotype(self, flexible_value_ci):
         """Mutational genotype enumeration """
@@ -383,7 +365,7 @@ class Parameters():
         flex_enum_value.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
         flex_enum_value.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
 
-        flex_enum_value.UsageEntryTypeRef = ["{}{}{}".format(cxu.CV_PREFIX, 'base', ref) for ref in cxu.CV_BASES]
+        flex_enum_value.UsageEntryTypeRef = ["{}{}".format(cxu.CV_PREFIX, ref) for ref in cxu.CV_BASES]
         flexible_value_ci.append(flex_enum_value)
     
     def _addalt(self, flexible_value_ci):
@@ -534,11 +516,10 @@ class Parameters():
 
     def _addeffects(self, flexible_value_ci):
         """Adds the effects of the somatic SNVs"""
-        flex_enum_value = cx.FlexibleEnumerationType()
+        flex_enum_value = cx.FlexibleStringType()
         flex_enum_value.Code = "{}effect".format(cxu.CV_PREFIX)
         flex_enum_value.Name = "Effect of SNV"
         flex_enum_value.ShortName = "Effect"
-        flex_enum_value.ChoiseType = "SELECTONE"
         flex_enum_value.Description = "Enumeration of different effects resulting from the variant"
 
         multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='effect')
@@ -549,7 +530,6 @@ class Parameters():
         flex_enum_value.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
         flex_enum_value.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
 
-        flex_enum_value.UsageEntryTypeRef = ["{}{}".format(cxu.CV_PREFIX, effect) for effect in cxu.CV_EFFECT_SSNV]
         flexible_value_ci.append(flex_enum_value)
 
     def _addchromosomes(self, flexible_value_ci):
