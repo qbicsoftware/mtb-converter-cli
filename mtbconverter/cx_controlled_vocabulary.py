@@ -34,15 +34,6 @@ class ControlledVocabulary:
             item.Category = "false"
             self._catalogue_data.append(item)
         
-        # create vc for sSNV effects
-        for effect in cxu.CV_EFFECT_SSNV:
-            multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='{}{}'.format(cxu.CV_PREFIX, effect))
-            multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='{}{}'.format(cxu.CV_PREFIX, effect))
-            item = cx.UsageEntryType()
-            item.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
-            item.Code = '{}{}'.format(cxu.CV_PREFIX, effect)
-            item.Category = "false"
-            self._catalogue_data.append(item)
         
         # create cv for bases
         for base in cxu.CV_BASES:
@@ -50,7 +41,7 @@ class ControlledVocabulary:
             multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='{}{}{}'.format(cxu.CV_PREFIX, 'base', base))
             item = cx.UsageEntryType()
             item.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
-            item.Code = '{}{}{}'.format(cxu.CV_PREFIX, 'base', base)
+            item.Code = '{}{}'.format(cxu.CV_PREFIX, base)
             item.Category = "false"
             self._catalogue_data.append(item)
         
