@@ -3,6 +3,7 @@ type for the patient import"""
 
 import uuid
 import datetime
+import mtbparser.snv_utils
 import mtbconverter.cxxpy as cx
 from .cx_utils import *
 
@@ -72,6 +73,8 @@ class DataSetInstance():
 
     def _valuetypefromfield(self, field):
         """Determine value type from a field"""
+        if field.lower() == 'effect' and str(self._header_type.__name__) is str(mtbparser.snv_utils.CnvHeader.__name__):
+            return cx.FlexibleStringDataType()
         if field.lower() in ['tumor_content', 'allele_frequency_tumor', 'coverage']:
             return cx.FlexibleDecimalDataType()
         if field.lower() in ['genotype', 'mutational_load', 'ref', 'effect', 'chromosomes', 'chr']:
