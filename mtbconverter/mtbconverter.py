@@ -72,6 +72,9 @@ class MtbConverter():
         # First, we have to build a flexible data type
         # for EVERY variant entry!
         for variant_file, mtb_filetype in self._filelist.items():
+            # Skip germline data atm
+            if mtb_filetype == mtb_filetype.GERM_SNV or mtb_filetype == mtb_filetype.GERM_CNV:
+                continue
             file_path = self._tmp_dir + os.path.sep + variant_file
             print('Sample {}: Processing of file {}'.format(self._sample_code,
                 variant_file))
