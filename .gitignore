@@ -6,6 +6,12 @@ __pycache__/
 # C extensions
 *.so
 
+# TSV data
+*.tsv
+*.zip
+*.xml
+*.xsd
+
 # Distribution / packaging
 .Python
 env/
