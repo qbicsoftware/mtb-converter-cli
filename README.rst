@@ -12,7 +12,9 @@ A Python command line tool that parses and converts diagnostic variant data for 
 .. |codecov| image:: https://codecov.io/gh/qbicsoftware/qbic.mtbconverter/branch/master/graph/badge.svg
   :target: https://codecov.io/gh/qbicsoftware/qbic.mtbconverter
 .. |ghtag| image:: https://img.shields.io/github/release/qbicsoftware/qbic.mtbconverter/all.svg
+    :target: https://github.com/qbicsoftware/qbic.mtbconverter/releases
 .. |pypi| image:: https://img.shields.io/pypi/v/mtbconverter.svg
+    :target: https://pypi.python.org/pypi/mtbconverter
 .. |license| image:: https://img.shields.io/github/license/qbicsoftware/qbic.mtbconverter.svg
 
 
