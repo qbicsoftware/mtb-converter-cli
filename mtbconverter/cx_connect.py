@@ -56,15 +56,13 @@ class CXXConnect():
         response = requests.post(importUrl, headers=headers, auth=restAuth, verify=False)
         return response
     
+    # Leave this in the source code for know
     def _getimports(self):
+        """ This function is not called yet, but might get
+        important in the future for further checks of successful
+        import """
         filename = os.path.basename(filepath.strip())
         importUrl = authData['serveraddr'] + '/centraxx/rest/import/successful/' + filename
         restAuth = HTTPBasicAuth(authData['authuser'], authData['password'])
         response = requests.get(importUrl, auth=restAuth, verify=False)
         return response
-    
-    def _cxximport_queue(self):
-        pass
-    
-    def _delete_sucessful_imports(self):
-        pass
