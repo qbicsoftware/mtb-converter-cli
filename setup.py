@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='mtbconverter',
-    version='0.1.2dev',
+    version='0.1.2',
     license='MIT',
     url='https://github.com/qbicsoftware/qbic.mtbconverter',
     description='A Python command line tool that parses and converts diagnostic variant data for the Molecular Tumor Board at UKT Tübingen.',
