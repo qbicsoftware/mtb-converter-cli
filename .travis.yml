@@ -16,11 +16,6 @@ script:
 after_success:
   - codecov
 
-branches:
-  only:
-  - master
-  - development
-
 deploy:
   provider: pypi
   user: "sven1103"
