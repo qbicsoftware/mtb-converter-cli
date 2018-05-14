@@ -40,7 +40,7 @@ class DataSetInstance():
         flex_dataset.DateType = cx.DateType(Date=timestamp, Precision='EXACT')
         snv_columns = []
         for key, value in self._snv_item.get_item().items():
-            value_type = self._valuetypefromfield(key)
+            value_type = self._valuetypefromfield(key, value)
             value_type.FlexibleValueTypeRef = CV_PREFIX + key.lower()
             if value_type.__class__.__name__ == 'FlexibleEnumerationDataType':
                 value_type.Value = [CV_PREFIX + value]
@@ -71,8 +71,10 @@ class DataSetInstance():
 
         return flex_dataset
 
-    def _valuetypefromfield(self, field):
+    def _valuetypefromfield(self, field, value):
         """Determine value type from a field"""
+        if value == "NA":
+            return cx.FlexibleStringDataType()
         if field.lower() in ['tumor_content', 'allele_frequency_tumor', 'coverage']:
             return cx.FlexibleDecimalDataType()
         if field.lower() in ['genotype', 'mutational_load', 'ref', 'chromosomes', 'chr']:
