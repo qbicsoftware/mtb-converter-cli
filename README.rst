@@ -146,6 +146,10 @@ Changelog
 ---------
 Find all the version changes of ``mtbconverter`` here
 
+2018-05-14: 0.1.3
+~~~~~~~~
+Fix SimpleValue Error, when a field contains "NA"s. Convert data type to FlexibleStringDataType then.
+
 2018-02-07: v0.1.1
 ~~~~~~~~~
 Small bug fixes, add entry point, so mtbconverter can be used as command line tool
