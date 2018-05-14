@@ -1,4 +1,4 @@
-mtbconverter
+MTB converter
 ==============
 
 |language| |travis| |codecov| |ghtag| |pypi| |license| 
