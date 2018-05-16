@@ -350,12 +350,11 @@ class Parameters():
 
     def _addref(self, flexible_value_ci):
         """Adds the reference base enumeration"""
-        flex_enum_value = cx.FlexibleEnumerationType()
-        flex_enum_value.Code = "{}ref".format(cxu.CV_PREFIX)
-        flex_enum_value.Name = "Reference base"
-        flex_enum_value.ShortName = "Reference"
-        flex_enum_value.ChoiseType = "SELECTONE"
-        flex_enum_value.Description = "Enumeration of different reference bases"
+        flex_type = cx.FlexibleStringType()
+        flex_type.Code = "{}ref".format(cxu.CV_PREFIX)
+        flex_type.Name = "Reference base"
+        flex_type.ShortName = "Reference"
+        flex_type.Description = "Reference base"
 
         multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='ref')
         multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='ref')
@@ -365,7 +364,6 @@ class Parameters():
         flex_enum_value.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
         flex_enum_value.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
 
-        flex_enum_value.UsageEntryTypeRef = ["{}{}".format(cxu.CV_PREFIX, ref) for ref in cxu.CV_BASES]
         flexible_value_ci.append(flex_enum_value)
     
     def _addalt(self, flexible_value_ci):

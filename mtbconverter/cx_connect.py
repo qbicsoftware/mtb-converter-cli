@@ -38,7 +38,9 @@ class CXXConnect():
         filename = os.path.basename(xmlfile.strip())
         importUrl = self._importqueue + "/" + filename
         restAuth = HTTPBasicAuth(self._authuser, self._password)
-        headers = {'Content-Type': 'application/xml'}
+        fileSuffix = filename.split('.')[-1]
+        headers = {'Content-Type': 'application/xml'} if fileSuffix.lower() == 'xml' else
+            {'Content-Type': 'text/csv'}
         xmlContent = codecs.open(xmlfile, 'rb', encoding='utf-8')
         xml_string = ""
         for content in xmlContent.readlines():
