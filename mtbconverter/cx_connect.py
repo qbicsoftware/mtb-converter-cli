@@ -39,12 +39,10 @@ class CXXConnect():
         importUrl = self._importqueue + "/" + filename
         restAuth = HTTPBasicAuth(self._authuser, self._password)
         headers = {'Content-Type': 'application/xml'}
-        #files = {'file': io.open(filepath, 'r', encoding='utf8')}
         xmlContent = codecs.open(xmlfile, 'rb', encoding='utf-8')
         xml_string = ""
         for content in xmlContent.readlines():
             xml_string += content
-        #xmlContent = open(filepath, 'rb')
         response = requests.post(importUrl, data=xml_string, auth=restAuth, headers=headers, verify=False)
         return response
     
@@ -66,3 +64,4 @@ class CXXConnect():
         restAuth = HTTPBasicAuth(authData['authuser'], authData['password'])
         response = requests.get(importUrl, auth=restAuth, verify=False)
         return response
+    

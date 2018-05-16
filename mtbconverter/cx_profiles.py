@@ -64,6 +64,7 @@ class SSNVProfiles():
             TemplateType='LABORMETHOD', Version='{:.0f}'.format(SOMATIC_SNV_VERSION-1), EntityStatus='ACTIVE', Global='false', MultipleUse='false', Active='false')
 
         cfr_template_section = cx.CrfTemplateSectionType(Name='Somatic SNV V{:.1f}'.format(SOMATIC_SNV_VERSION),
+            Code='QBIC_SOMATIC_SNV_V{:.1f}'.format(SOMATIC_SNV_VERSION),
             Height=len(SNV_FIELD_TYPES), Width='1', Position='-1')
         
         cfr_template_section.CrfTemplateField = [
@@ -125,6 +126,7 @@ class GSNVProfiles():
             TemplateType='LABORMETHOD', Version='{:.0f}'.format(GERMLINE_SNV_VERSION-1), EntityStatus='ACTIVE', Global='false', MultipleUse='false', Active='false')
 
         cfr_template_section = cx.CrfTemplateSectionType(Name='Germline SNV V{:.1f}'.format(GERMLINE_SNV_VERSION),
+            Code='QBIC_GERMLINE_SNV_V{:.1f}'.format(SOMATIC_CNV_VERSION),
             Height=len(GSNV_FIELD_TYPES), Width='1', Position='-1')
         
         cfr_template_section.CrfTemplateField = [
@@ -185,6 +187,7 @@ class SCNVProfiles():
             TemplateType='LABORMETHOD', Version='{:.0f}'.format(SOMATIC_CNV_VERSION-1), EntityStatus='ACTIVE', Global='false', MultipleUse='false', Active='false')
 
         cfr_template_section = cx.CrfTemplateSectionType(Name='Somatic CNV V{:.1f}'.format(SOMATIC_CNV_VERSION),
+            Code='QBIC_SOMATIC_CNV_V{:.1f}'.format(SOMATIC_CNV_VERSION),
             Height=len(GSNV_FIELD_TYPES), Width='1', Position='-1')
         
         cfr_template_section.CrfTemplateField = [
@@ -245,6 +248,7 @@ class GCNVProfiles():
             TemplateType='LABORMETHOD', Version='{:.0f}'.format(GERMLINE_CNV_VERSION-1), EntityStatus='ACTIVE', Global='false', MultipleUse='false', Active='false')
 
         cfr_template_section = cx.CrfTemplateSectionType(Name='Germline CNV V{:.1f}'.format(GERMLINE_CNV_VERSION),
+            Code='QBIC_GERMLINE_CNV_V{:.1f}'.format(GERMLINE_CNV_VERSION),
             Height=len(GCNV_FIELD_TYPES), Width='1', Position='-1')
         
         cfr_template_section.CrfTemplateField = [
@@ -305,6 +309,7 @@ class SVProfiles():
             TemplateType='LABORMETHOD', Version='{:.0f}'.format(SOMATIC_SV_VERSION-1), EntityStatus='ACTIVE', Global='false', MultipleUse='false', Active='false')
 
         cfr_template_section = cx.CrfTemplateSectionType(Name='Somatic SV V{:.1f}'.format(SOMATIC_SV_VERSION),
+            Code='QBIC_SOMATIC_SV_V{:.1f}'.format(SOMATIC_SV_VERSION),
             Height=len(SV_FIELD_TYPES), Width='1', Position='-1')
         
         cfr_template_section.CrfTemplateField = [
@@ -365,6 +370,7 @@ class MetadataProfiles():
             TemplateType='LABORMETHOD', Version='{:.0f}'.format(METADATA_VERSION-1), EntityStatus='ACTIVE', Global='false', MultipleUse='false', Active='false')
 
         cfr_template_section = cx.CrfTemplateSectionType(Name='Metadata V{:.1f}'.format(METADATA_VERSION),
+            Code='QBIC_METADATA_V{:.1f}'.format(METADATA_VERSION),
             Height=len(METADATA_TYPES), Width='1', Position='-1')
         
         cfr_template_section.CrfTemplateField = [
