@@ -77,7 +77,7 @@ class DataSetInstance():
             return cx.FlexibleStringDataType()
         if field.lower() in ['tumor_content', 'allele_frequency_tumor', 'coverage']:
             return cx.FlexibleDecimalDataType()
-        if field.lower() in ['genotype', 'mutational_load', 'ref', 'chromosomes', 'chr']:
+        if field.lower() in ['genotype', 'mutational_load', 'chromosomes', 'chr']:
             return cx.FlexibleEnumerationDataType()
         if field.lower() in ['start', 'end']:
             return cx.FlexibleIntegerDataType()

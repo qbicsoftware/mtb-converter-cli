@@ -163,7 +163,7 @@ class Parameters():
 
     def _addtumorcontent(self, flexible_value_ci):
         """Add field for tumor content"""
-        flex_type = cx.FlexibleDecimalType()
+        flex_type = cx.FlexibleStringType()
         flex_type.Code = "{}tumor_content".format(cxu.CV_PREFIX)
         flex_type.Name = "Sample tumor content"
         flex_type.ShortName = "Tumor content"
