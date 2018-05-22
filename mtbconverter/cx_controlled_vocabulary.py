@@ -26,8 +26,8 @@ class ControlledVocabulary:
 
         # register the chromosomes (de, en)
         for chr_index in cxu.CV_CHROMOSOMES:
-            multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='Chromosome {}{}{}'.format(cxu.CV_PREFIX, 'chr',chr_index))
-            multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='Chromosome {}{}{}'.format(cxu.CV_PREFIX, 'chr',chr_index))
+            multi_entry_type_de = cx.MultilingualEntryType(Lang='de', Value='Chromosome {}'.format(chr_index))
+            multi_entry_type_en = cx.MultilingualEntryType(Lang='en', Value='Chromosome {}'.format(chr_index))
             item = cx.UsageEntryType()
             item.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
             item.Code = '{}{}{}'.format(cxu.CV_PREFIX, 'chr',chr_index)
