@@ -361,10 +361,10 @@ class Parameters():
         multi_entry_type_de_desc = cx.MultilingualEntryType(Lang='de', Value='ref')
         multi_entry_type_en_desc = cx.MultilingualEntryType(Lang='en', Value='ref')
 
-        flex_enum_value.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
-        flex_enum_value.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
+        flex_type.NameMultilingualEntries = [multi_entry_type_de, multi_entry_type_en]
+        flex_type.DescMultilingualEntries = [multi_entry_type_de_desc, multi_entry_type_en_desc]
 
-        flexible_value_ci.append(flex_enum_value)
+        flexible_value_ci.append(flex_type)
     
     def _addalt(self, flexible_value_ci):
         """Add the start position of the somatic SNV"""
