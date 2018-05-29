@@ -73,7 +73,7 @@ class DataSetInstance():
 
     def _valuetypefromfield(self, field, value):
         """Determine value type from a field"""
-        if value == "NA":
+        if value in ["NA", "na", "n/a"]:
             return cx.FlexibleStringDataType()
         if field.lower() in ['tumor_content', 'allele_frequency_tumor', 'coverage']:
             return cx.FlexibleDecimalDataType()
